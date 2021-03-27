@@ -1,0 +1,31 @@
+    sum.misc.Unsafe提供底层的机制，这种机制仅供java核心类库使用，而不应该被普通用户使用
+    通过反射获取unsafe实例
+        Field f = Unsafe.class.getDeclaredField("theUnsafe");
+        f.setAccessible(true);
+        Unsafe unsafe = (Unsafe)f.get(null);
+    修改私有字段的值
+        使用Unsafe的putXxx()方法
+    抛出异常:
+        Unsafe.throwException(异常实例);
+        使用Unsafe抛出异常不需要定义在方法签名上往外抛
+    使用堆外内存
+        如果进程在运行过程在jvm上的内存不足，会导致频繁的进行GC。可以使用堆外内存，这是一块JVM管理的内存
+        使用Unsafe的allocateMemory()我们可以在堆外分配内存。这个内存不受JVM管理，因此我们需要调用freeMemory()方法手动释放它
+    CompareAndSwap操作
+        JUC下面大量使用了CAS操作，它们的底层是调用的Unsafe的CompareAndSwapXxx()方法。这种方式广泛运用于无锁算法，于java中悲观锁机制相比，它利用CAS处理器指令提供极大的加速
+        可以基于Unsafe的compareAndSwapInt()方法构建线程全的计数器
+    park/unpark
+        JVM在上下问切换的时候使用了Unsafe中的的两个非常牛逼的方法park()和unpark()。
+        当一个线程正在等待某个操作是，jvm调用Unsafe的park()来阻塞此线程。
+        当阻塞中的呈现需要再次运行时，jvm调用Unsafe的unpark()方法来唤醒此线程。
+        我们之前在分析java中的集合时看到了大量的LockSupport.park()/unpark()，它们底层都是调用的Unsafe的这两个方法
+        总结:
+            使用Unsafe几乎可以操作一切
+                1.实例化一个类
+                2.修改私有字段的值
+                3.抛出checked异常
+                4.使用堆外内存
+                5.CAS操作
+                6.阻塞/唤醒线程
+
+

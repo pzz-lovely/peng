@@ -1,0 +1,72 @@
+    Interrupted()方法是一个静态方法，它检测当前的线程是否被中断。而且调用interrupted方法会清除该线程的中断状态
+    isInterrupted方法是一个实例方法，可用来检测是否有线程被中断。调用这个方法不会改变中断状态
+    InterruptedException异常最好不要tryCatch块直接捕获，并打印错误信息 ，而是Thread.currentThread().interrupted() 中断
+
+    当一个线程视图获取一个内部的对象锁，而该锁被其他线程持有，则该线程进入阻塞状态。当所有其他锁释放该锁，并且线程调度器允许本线程持有它的时候，该线程变成非阻塞状态
+    当线程等待另一个线程通知调度器一个条件时，它自己进入等待状态。在调用Object.wait方法或者Thread.join方法，java.util.concurrent包中的Lock或Condition时，就会出现这种情况。实际上，被阻塞状态与等待状态是有很大不同的
+    有几个方法有一个超时参数。调用它们导致线程进入计时等待(timed waiting)状态。这一状态将一直保持到超时期满或者接收到适当的通知。带有超时参数的方法有Thread.sleep()和Object.wait(),Thread.join(),Lock.tryLock以及Condition.await
+
+    条件对象:conditional variable
+        等待获取锁和调用await方法的线程本质上的不同。一旦一个线程调用await方法，它进入条件的等待集合。当锁可用时，该线程不能马上解除阻塞。相反它处于阻塞状态，直到另一个线程调用同一条件的signalAll为止。
+        意思就是:一旦线程调用await()方法他会进入到等待集合，并且只能由另一个线程调用signalAl或signal才能得到等待线程调度员执行。
+        一旦锁成为可用的，它们中的某个将从await调用返回，获得该所并从阻塞的地方继续执行。
+        如果没有其他线程来重新激活等待的线程，他就永远不再执行，这导致 死锁deadlock
+        应该如何调用signalAll呢？在对象的状态有利于等待线程的方法改变时调用signalAll。意思就是: 等待的线程可以发生改变了
+
+
+
+
+    java.lang.Thread
+    Thread(Runnable target)
+    创建一个新线程
+
+    void interrupt()
+    想线程发送中断请求。线程中断状态设置为true。如果目前线程sleep()调用阻塞，那么抛出InterruptedException
+    boolean isInterrupted()
+    测试线程是否被终止。这一调用不改变线程的中断状态
+    void join()
+    等待终止指定的线程
+    void join(long millis)
+    等待指定的线程死亡或者经过指定毫秒数
+    Thread.State getState()
+    等到这一线程的状态 NEW ,RUNNABLE,BLOCKED,WAITING,TIMED_WAITING
+    static setPriority(int newPriority)
+        参数 MIN_PRIORITY MAX_PRIORITY
+    static void yield()
+    导致当前执行线程处于让步状态。
+    void setDamon(boolean isDaemon)
+    设置守护线程
+
+
+
+    static boolean interrupted()
+    测试当前线程(即正在执行这一命令的线程)是否被中断。这一调用会产生副作用--它将当前线程的中断状态重置为false
+    static void sleep(long millis)
+    休眠给定的毫秒数
+
+
+    java.lang.ThreadLocal<T>
+    T get()
+    得到这个线程的当前值，如果是首次调用get，会调用initialize来得到这个值
+    protected <T> initialize()
+    应该覆盖这个方法来提供一个初始值。默认情况下，这个方法返回null
+    void set(T t)
+    为这个线程设置一个新值
+    void remove()
+    删除对应的这个线程的值
+    static <S> ThreadLocal<S> withInitial(Supplier<? extends S> supplier)
+    创建一个局部线程线程变量，其初始值通过调用给定的supplier生成
+
+    java.util.function.Supplier<T>
+    T get()
+
+
+    java.util.concurrent.ThreadLocalRandom
+    static ThreadLocalRandom current()
+    返回特定于当前线程的Random类实例。
+
+
+
+
+
+

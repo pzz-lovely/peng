@@ -1,0 +1,35 @@
+    （1）ReentrantLock有哪些优点？
+
+    （2）ReentrantLock有哪些缺点？
+
+    （3）ReentrantLock是否可以完全替代synchronized？
+    简介：
+        synchronized是java原生提供用于多线程环境中保证同步的关键字，底层是通过修改对象头中的MarkWord来实现的。
+        ReentrantLock是java语言层面提供的用于在多线程环境中保证同步的类，底层是通过原子更新状态变量state来实现的
+        既然有了synchronized的关键字来保证同步了，为什么还要实现一个ReentrantLock类呢？它们之间有什么异同呢？
+        功能          ReentrantLock           Synchronized
+        可重入         支持                      支持
+        非公平         支持(默认)                 支持
+        加锁/解锁方式   需要手动加锁，解锁一般使用try...finally..保证锁能够完整施法                                      手动加锁，无序刻意解锁
+        按key锁        不支持，比如按用户id加锁      支持,synchronized加锁时需要传入一个对象
+        公平锁         支持,new ReentrantLock(true)  不支持
+        中断           支持,lockInterruptibly()    不支持
+        尝试加锁        支持,tryLock()             不支持
+        超时锁         支持,tryLock(timeout,unit)  不支持
+        获取当前线程获取锁的次数
+                       支持,getHoldCount()        不支持
+        获取等待的线程    支持,getWaitingThread()    不支持
+        检测是否被当前线程占有
+                        支持.isHeldByCurrentThread() 不支持
+        检测是否被任意线程占有 支持isLocked()          不支持
+        条件所           可支持多个条件,condition.await().condition.signal(),condition.signalAll                  只支持一个obj.wait(),obj.notify(),obj.notifyAll()
+
+    总结
+        （1）synchronized是Java原生关键字锁；
+        （2）ReentrantLock是Java语言层面提供的锁；
+        （3）ReentrantLock的功能非常丰富，解决了很多synchronized的局限性；
+        （4）至于在非公平模式下，ReentrantLock与synchronized的效率孰高孰低，彤哥给出的结论是随着Java版本的不断升级，synchronized的效率只会越来越高；
+    彩蛋
+        既然ReentrantLock的功能更丰富，而且效率也不低，我们是不是可以放弃使用synchronized了呢？
+        答：我认为不是。因为synchronized是Java原生支持的，随着Java版本的不断升级，Java团队也是在不断优化synchronized，所以我认为在功能相同的前提下，最好还是使用原生的synchronized关键字来加锁，这样我们就能获得Java版本升级带来的免费的性能提升的空间。
+        另外，在Java8的ConcurrentHashMap中已经把ReentrantLock换成了synchronized来分段加锁了，这也是Java版本不断升级带来的免费的synchronized的性能提升。

@@ -1,0 +1,7 @@
+    java.awt.EventQueue
+    static void invokeLater(Runnable runnable)
+    在待处理的线程被处理之后，让runnable对象的run方法事件分配在线程中执行
+    static void invokeAndWait(Runnable runnable)
+    在待处理的线程的被处理之后，让runnable对象的run方法在事件分配线程中执行。该调用会阻塞,直到run方法终止。
+    static boolean isDispatcherThread()
+    如果执行这一方法的线程是事件分配线程，返回true

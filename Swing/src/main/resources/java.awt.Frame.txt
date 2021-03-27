@@ -1,0 +1,10 @@
+方法:
+    boolean isResizable()
+    void setResizable(boolean b)
+    获取或设置resizable属性，这个属性设置后，用户可以重新设置框架的大小
+    String getTitle()
+    void setTitle()
+    获取或设置title标题
+    Image getIconImage()
+    void setIconImage(Image image)
+    获取

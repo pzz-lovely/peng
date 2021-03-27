@@ -1,0 +1,18 @@
+    void acquire(int arg)
+    独占锁获取同步状态，如果当前线程获取同步状态成功，则有该方法返回，否则，将会进入同步队列等待，该方法将会调用和重写的tryAcquire(int arg)方法
+    void acquireInterruptibly(int arg)
+    与acquire(int arg)相同，但是该方法响应中断，当前线程未获取到同步状态而进入同步队列中，如果当前线程被中断，则该方法会抛出InterruptedException并返回
+    boolean tryAcquireNanos(int arg,long nanos)
+    在acquireInterruptibly(int arg)基础上增大了超时限制，如果当前线程在超时时间内没有获取到同步状态，那么将会返回false,如果获取到了返回true
+    void acquireShared(int arg)
+    共享式的获取同步状态，如果当前线程未获取到同步状态，将会进入同步队列等待，与独占锁获取的主要区别是在同一时刻可以有多个线程获取到同步状态
+    void acquireSharedInterruptibly(int arg)
+    与acquireShared(int arg)相同，该方法响应中断
+    boolean tryAcquireASharedNanos(int arg,long nanos)
+    在acquireSharedInterruptibly(int arg)基础上增加了超时限制
+    boolean release(int arg)
+    独占式的释放同步状态，该方法会在释放同步状态之后，将同步队列中第一个节点包含的线程唤醒
+    boolean releaseShared(int arg)
+    共享式的释放同步状态
+    Collection<Thread> getQueuedThreads()
+    获取等待在同步队列上的线程集合

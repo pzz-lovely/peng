@@ -1,0 +1,72 @@
+StampedLock是一个更加高效的读写锁的实现，而且它不是基于AQS来实现的，它的内部自称一片逻辑。
+StampedLock具有三种模式:写模式，读模式，乐观读模式
+ReentrantReadWriteLock中的读和写都是一种悲观锁的体现，stampedLock加入了一种新的模式-乐观锁，它是指当乐观读时，假定没有其他线程修改数据，读取完成后再检查版本号有没有变化，没有变化就读取成功了，这种模式更适用于读多写少的场景。
+    源码分析:
+        主要内部类
+            static final class WNode{
+                //前一个节点
+                volatile WNode prev;
+                //下一个节点
+                volatile WNode next;
+                //读线程所用的链表(实际上是一个栈结果) list of linked readers
+                volatile WNode cowait;
+                //阻塞的线程 non-null while possibly parked
+                volatile Thread thread;
+                //状态 0 waiting or cancelled
+                volatile int status;
+                //读模式还是写模式 RMode or WMode
+                final int mode;
+                WNode(int m,WNode o) {mode = m;prev = p;}
+            }
+        队列中的节点，类似于AQS队列中的节点，可以看它组成了一个双向链表，内部维护着阻塞的线程
+        主要属性
+        //一堆常量
+        //读线程的个数占有低7位
+        private static final int LG_READERS = 7;
+        //读线程个数每次增加的单位
+        private static final long RUNIT = 1L;
+        //写线程个数所在的位置
+        private static final long WBIT = 1L << LG_READERS; //128=1000 0000
+        //读线程个数所在的位置
+        private static final long RBITS = WBIT - 1L;//127 = 111 1111
+        //最大线程个数
+        private static final long BFULL - RBITS - 1L; //126 = 111 1110
+        //读线程个数和写线程个数的掩码
+        private static final ling ABITS = RBITS | WBIT; //255 = 1111 1111
+        //读线程个数的反数，高25为全部为1
+        private static final long SBITS = ~RBITS; //-128 =  1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1000 0000
+
+
+        //state的初始值
+        private static final long ORIGIN = WBIT << 1;   //256 = 1 0000 0000
+        //队列的头节点
+        private transient volatile WNode whead;
+        //队列的尾节点
+        private transient volatile WNode wtail;
+        //存储着当前的版本号，类似于AQS的状态变量state
+        private transient volatile long state;
+
+        //构造方法
+            public StampedLock(){ state = ORIGIN; }
+        //获取写锁  writeLock()方法
+            public long writeLock(){
+                long s = state,next;
+                //ABITS = 255 = 1111 1111
+                //WBITS = 128 = 1000 1000
+                //state与ABITS如果等于0，尝试原子更新state的值加WBITS
+                //如果成功则返回更新的值，如果失败调用acquiredWrite()方法
+                return (((s & ABITS) == 0L && U.compareAndSwapLong(this,State,s,next = s + WBIT)) ? next : acquireWrite(false,0L));
+            }
+        以初始值为例，则state & ABITS的结果为 1 0000 0000 1111 1111 0 0000 0000
+        此时state为初始状态，与 ABITS与运算后的值为0，所以执行后面的CAS方法，s+WBITS的值为384 = 1 1000 0000。
+
+
+            private long acquireWrite(boolean interruptible,long dedline){
+                //node为新增节点，p为尾节点(即将成为node的前置节点)
+                WNode node = null ,p ;
+                //第一次自旋一入队
+                for(int spins = - 1;;){
+                    long m,s,nsl
+                    //再次尝试获取读写锁
+                }
+            }

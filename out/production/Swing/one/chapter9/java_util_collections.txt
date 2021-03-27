@@ -1,0 +1,2 @@
+static <E> Collection unmodifiableCollection(Collection<E> c) 无法改变的
+

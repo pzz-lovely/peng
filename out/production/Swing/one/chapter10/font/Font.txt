@@ -1,0 +1,21 @@
+    java.awt.Font
+    Font(String name,int style,int size)
+    创建一个新字体对象
+    String getFontName()
+    String getFontFamily()
+    String getName()
+
+    Rectangle2D getStringBounds(String s,FontRenderContext context)
+    返回包围这个字符串的矩形。矩形的起点为基线。矩形顶端的y坐标等于上坡度的负值。矩形的高度等于上坡度、下坡度和行间之和。宽度等于字符串的宽度。
+    LineMetrics getLineMetrics(String s,FontRenderContext context)
+    返回测定字符串宽度的一个线性metrics对象
+
+    java.awt.font.LineMetrics
+    float getAscent()
+    返回字体的上坡度
+    。。这种鬼 不认识 自己看书 434页
+
+
+    java.awt.FontMetrics
+    FontRenderContext getFontRenderContext()
+    返回字体的字体绘制环境

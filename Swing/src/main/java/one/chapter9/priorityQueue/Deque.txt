@@ -1,0 +1,48 @@
+队列可以让人们有效地在尾部添加一个元素，在头部删除一个元素。有两个端头的队列，即双端队列
+Deque接口 ArrayDeque和LinkedList实现 这两个类都提供双端队列，而且可以在必要的时候增加队列的长度
+
+    java.util.Queue<E> interface
+    boolean add(E element)
+    boolean offer(E element)
+    如果对列没有满，将给定的元素添加到这个双端队列的尾部并返回true。如果队列满了，第一个方法抛出IllegalStateException异常 ，第二个返回false
+
+    E remove()
+    E poll()
+    如果队列不空，删除并返回这个队列头部的元素，但不删除。如果队列是空，第一个方法抛出NoSuchElementException，第二个返回null。
+    E element()
+    E peek()
+    如果队列不空，返回这个队列头部的元素，但不删除。如果队列为空，第一个方法将抛出一个NoSuchElementException，第二个返回null。
+
+
+    java.util.Deque<E> interface
+    void addFirst(E element)
+    void addLast(E element)
+    boolean offerFirst(E element)
+    boolean offerLast(E element)
+    将给定对象方法添加到双端队列的头部或尾部。如果队列满了，前两个抛出方法抛出IllegalStateException异常 ，第二个返回false
+
+    E removeFirst(E element)
+    E removeLast(E element)
+    E pollFirst(E element)
+    E pollLast(E element)
+    如果队列不空，删除并返回队列头部或末尾的元素。如果队列为空前两个方法将抛出一个NoSuchElementException，后两个返回null。
+
+    E getFirst()
+    E getLast()
+    E peekFirst()
+    E peekLast()
+    如果队列非空，返回队列头部的元素，但不删除，如果队列空，前面两个方法将抛出NoSuchElementException，后面两个返回null
+
+
+    java.util.ArrayDeque<E> implements Deque
+    ArrayDeque()
+    ArrayDeque(int initialCapacity)
+
+
+   优先级队列priorityQueue中的元素可以按照任意的顺序插入，却总是按照排序的顺序进行检索。
+   优先级队列使用一种优雅且高效的数据结构，称为堆(heap)。堆是一个可以自我调整的二叉树，对树进行添加(add)和删除(remove)操作，可以让最小的元素移动到根，而不必花费时间对元素进行排序。
+   使用优先级队列的典型案例实例是任务调度。每一个任务有一个优先级，任务以随机顺序添加到队列中。没启动一个新的任务时，都将优先级最高的任务从任务队列中删除。
+   PriorityQueue()
+   PriorityQueue(int initialCapacity)
+   构造一个用于存放Comparable对象的优先级队列
+   PriorityQueue(int initialCapacity,Comparator<? super E> c)

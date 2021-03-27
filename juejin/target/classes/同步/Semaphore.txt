@@ -1,0 +1,88 @@
+Semaphore 信号量，它保存 一系列的许可(permits)，每次调用acquire()都将消耗一个许可，每次调用release()将归还一个许可
+    特性:
+        Semaphore中包含一个实现AQSd的同步器Sync，一次两个子类FairSync和 NonFairSync ,Semaphore也是区分1公平模式和非公平模式
+源码:
+    abstract static void Sync extends AbstractQueuedSynchronizr{
+        private static final long serialVersionUID = 1192457210091910933L;
+        //构造方法，传入许可次数，放入state中
+        Sync(int permits){
+            setState(permits);
+        }
+
+        //获取许可次数
+        final int getPermits(){
+            return getState();
+        }
+        //非公平模式尝试获取许可
+        final int nonfairTryAcquireShared(int acquires){
+            for(;;){
+                //查看还有几个许可
+                int available = getState();
+                //减去这次需要获取的许可还剩几个许可
+                int remaining = available - acquires;
+                //如果剩余许可小于0了则直接返回
+                //如果剩余许可不下于0，则尝试原子更新state的值，成功了返回剩余许可
+                if(remaining < 0 || compareAndSetState(available,remaining)
+                    return remaining;
+            }
+        }
+
+        //释放许可
+        protected final boolean tryReleaseShared(int releases){
+            for(;;){
+                //查看还有几个许可 several
+                int current  = getState();
+                //加上这次施法的许可
+                int next = current + releases;
+                //检测溢出
+                if(next < current )
+                    throw new Error("Maximun permit count exceeded");
+                if(compareAndSetState(current,next))
+                    return true;
+            }
+        }
+        //减少许可
+        final void reducePermits(int reductions){
+            for(;;){
+                int current = getState();
+                //减去将要减少的许可
+                int next = current - reductions;
+                //检测举出
+                if(next > current)  //underflow
+                    throw new Error("Permit count underflow"
+            }
+        }
+
+        //销毁许可
+        final int drainPermits(){
+            for(;;){
+                int current = getState();
+                //如果为0，直接返回
+                //如果不为0，把state原子更新为0
+                if(current == 0 || comparedAndSetState(current,0))
+                    return true;
+            }
+        }
+
+    }
+    通过Sync的结果实现方法，一下信息
+        1.许可是在构造方法时传入的
+        2.许可存放在状态变量state中
+        3.尝试获取一个许可的时候，则state的值键1
+        4.当state的值为0的时候，则无法获取许可
+        5.是否一个许可的时候回，则state的值加1
+        6.许可的个数介意动态改变
+    非公平模式下的NonfairSync方法
+        void acquire(); 获取一个许可，默认使用的是金额中断方法，如果尝试获取许可失败，会进入AQS的队列中排队
+        void acquireUninterruptibly();  获取一个许可，非中断方式，如果尝试获取许可失败，会进入AQS的队列中排队
+        boolean tryAcquire(); 尝试获取一个许可，使用Sync的非公平模式尝试获取许可方法，不论是否获取到许可都返回，只尝试一次，不会进入队列排队
+        boolean tryAcquire(long timeout,TimeUnit unit); 尝试获取一个许可，先尝试一次获取许可，如果失败则会等待timeout时间，这段时间内都没有获取到许可，则返回false,否则返回true
+        void release(); 释放一个许可，释放一个许可时state的值会加1，并且会唤醒下一个等待获取许可的线程
+        void acquire(int permits);  一次获取多个许可，可中断方式
+        void acqurieUniterruptibly(int permits);    一次获取多个许可，非中断方式
+        boolean tryAcquire(int permits);一次尝试获取多个许可，只尝试一次
+        boolean tryAcquire(int permits,long timeout,TimeUnit unit)尝试获取多个许可，并会等待timeout时间，这段时间没获取到许可则返回false,否则返回true
+        void release(int permits);  一次释放多个许可，state的值会相应增加permits的数量
+        int availablePermits(); 获取可用的许可次数
+        int drainPermits(); 销毁当前可用的许可次数，对于已经获取的许可没有影响，会把当前剩余的许可全部销毁
+        void reducePermits(int reduction)减少许可的次数

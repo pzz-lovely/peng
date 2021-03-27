@@ -1,0 +1,27 @@
+    java.util.concurrent包含几个 能帮助人么管理相互合作的线程集。
+    这些机制具有为线程之间的公用集结点模式(common rendezvous patterns)提供的'预置功能'canned functionality。
+        CyclicBarrier 允许线程集等待至其中预订数目的线程达到一个公共障栅(barrier)然后可以选择执行一个处理障栅的动作    当大量的线程需要在它们的结果可用之前晚会岑呢个时
+        Phaser 类似于循环障栅，不过有一个可变的计数
+        CounterDownLatch 允许线程集定等待直到计数器为0时  当一个或多个线程需要 等待 指定数目的事件发生
+        Exchanger 允许两个线程在要交换的对象准备好时交换对象 当两个线程 工作在 同一个数据结构的两个实例上的时候，一个向实例添加数据 而另一个从实例删除数据
+        Semaphore 允许线程集等待直到被允许继续运行为止    限制访问资源的线程总数。如果许可数是，常常阻塞线程直到 另一个线程给出许可为止
+        SynchronousQueue 允许一个线程把对象交给另一个线程  在没有显式同步的情况下，当两个线程准备好将一个线程传递给另一个时。
+
+
+    信号量Semaphore，一个信号量管理者许多的许可证(permit)。为了通过信号量，线程通过调用acquire请求许可。其他线程可以通过调用release释放许可。
+
+    障栅 CyclicBarrier类实现了一个集结点(rendezvous)成为障栅(barrier)，考虑大量的线程运行在一次计算的不同的部分的情形。当所有部分都准备好时，需要把结果组合在一起。
+    当一个线程完成他的那部分任务后，我们让他运行到障栅处。
+    一旦所有的线程都到达了这个障栅，障栅就撤销，线程就可以继续运行。
+    CyclicBarrier barrier = new CyclicBarrier(threadNumber)
+    public void run() {     thread run
+        doWork()
+        barrier.await()
+    }
+    await(long timeout,TimeUnit unit)
+    如果任何一个在障栅上等待的线程离开了 障栅，那么这个障栅就被破坏了(线程可能是await超时，或者中断)。在这种情况下，所有其他线程的await方法抛出BrokenBarrierException异常。
+    那些以及在等待的线程立即终止await()的调用
+    可以提供一个可选的障栅动作(barrier action)，当所有线程到达障栅的时候就会执行这一动作。
+    Runnable barrierAction = ...;
+    CyclicBarrier barrier = new CyclicBarrier(threadNum,barrierAaction)
+    障栅被称为循环的(cyclic)因为可以在所有等待线程被释放后被重用。

@@ -1,0 +1,25 @@
+java.util.Date类是在Java之中获日期时间最简单的一个类。
+在java程序中，日期时间，内存大小 或者文件大小都是用Long类型来进描述(毫秒数)
+日期时间和Long之间的转换、Date类可以实现日期先后关系的判断。
+
+    子类 java.sql.Date java.sql.Time java.sql.TimeStamp
+
+    构造
+    Date()
+    Date(long date)
+    将时间戳转换为Date类对象
+
+    long getTime()
+    将日期时间以long数据返回。
+    boolean after(Date when)
+    是否在指定日期之后
+    boolean before(Date when)
+    是否在指定日期之前
+
+    源码:
+    public Date(){
+        this(System.currentTimeMillis())
+    }
+    public Date(long date) {
+            fastTime = date;
+    }

@@ -1,0 +1,21 @@
+    javax.swing.JSlider
+    JSlider()
+    JSlider(int direction)
+    JSlider(int min,int max)
+    JSlider(int min,int max,int initialValue)
+    JSlider(int direction,int min ,int max,int initialValue)
+    用给定的方向，最大值、最小值和初始化值构造一个水平滑条
+        direction SwingConstants.Horizontal或SwingConstants.Vertical。默认水平
+        min,max 滑动条的最大值、最小值。默认值为 0到 100
+        initialValue 滑动条的初始化值。默认值为50
+    void setPaintTicks(boolean b)
+    如果b为true，则显示标尺
+    void setMajorTickSpacing(int units)
+    void setMinorTickSpacing(int units)
+    用给定的滑动条单位的倍数设置大标尺和小表尺
+    void setLabelTable(Dictionary table)
+    设置用于作为标尺标签的组件。表中的每一个键/值对都采用new Integer(value)/component的格式
+    void setSnapToTicks(boolean b)
+    如果b是true，每一次调整后滑块都要对齐最接近的标尺处
+    void setPaintTrack(boolean b)
+    如果b是true,显示滑动条滑动的轨迹

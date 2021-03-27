@@ -1,0 +1,24 @@
+    java.awt.event.InputEvent extends ComponentEvent
+    int getModifiersEx()
+    返回事件扩展的或"按下down的修饰符",使用下面的掩码值 检测返回结果
+        BUTTON1_DOWN_MASK button_down_mask
+        BUTTON2.DOWN_MASK
+        BUTTON3.DOWN_MASK
+        SHIFT_DOWN_MASK shift_down_mask
+        CTRL_DOWN_MASK
+        ALT_DOWN_MASK
+        ALT_GRAPH_DOWN_MASK
+        META_DOWN _MASK
+    static String getModifiersExTest(int modifiers)
+    返回给定标志集描述的扩展或按下down的修饰符字符串，例如 shift+Button
+
+    java.awt.event.MouseEvent extends InputEvent 详情见 MouseEvent
+    int getX()
+    int getY()
+    Point getPoint()
+    返回事件发生后，事件源组件左上角的坐标x(水平)和y(竖直)，或点信息
+    int getClickCount()
+    返回与事件关联的鼠标连击次数
+
+
+

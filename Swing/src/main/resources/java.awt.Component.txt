@@ -1,0 +1,13 @@
+方法:
+    boolean isVisible()
+    void setVisible(boolean b)
+    获取或设置visible属性。组件最初是可见，但JFrame这样的顶层组件例外
+    void setSize(int width,int height)
+    使用给定的宽度和高度，重新设置组件的大小
+    void setLocation(int x ,int y)
+    将组件移动到一个新的位置上。如果这个组件不是顶层组件，如果这个组件不是顶层组件， x 和 y 坐标（或者 p.x 和p.y) 是容器坐标；否则是屏幕坐标（例如： J F r a m e )。
+    void setBounds(int x,int y,int width ,int height)
+    移动并重新设置组件的大小
+    Dimension getSize
+    void setSize(Dimension d)
+    获取或设置当前组件的size属性

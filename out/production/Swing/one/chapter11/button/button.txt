@@ -1,0 +1,11 @@
+    java.swing.JButton
+    JButton(String label)
+    JButton(Icon icon)
+    JButton(String label,Icon icon)
+    JButton(Action action)
+    构建一按钮，标签可以是常规文本，也可以是 html
+
+
+    java.awt.Container
+    Component add(Component c)
+    将组件c添加到这个容器中

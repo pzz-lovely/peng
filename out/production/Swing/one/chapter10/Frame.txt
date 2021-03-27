@@ -1,0 +1,80 @@
+    所有的Swing组件必须由事件分派线程(event dispatcher thread)进行配置，线程将鼠标点击和按键控制转移到用户接口逐渐
+    JFrame的有六层结构 从外到内
+         框加外部
+         根窗格
+         层级窗格
+         菜单栏
+         内容窗格
+         玻璃窗格
+
+
+    java.awt.Component extends Object implements MenuContainer,ImageObserver
+    boolean isVisible()
+    void setVisible(boolean b)
+    获取或设置visible属性。组件最初和可见的，但jFrame这样的顶层(最外面层)组件例外
+    void setSize(int width,int height)
+    使用给定宽高，设置组件的大小
+    void setLocation(int x,int y)
+    将组件移到一个新的位置上。
+    Dimension getSize()
+    void setSize(Dimension d) Dimension尺寸
+    获取或设置当前组件的size属性
+    void repaint()
+    重新绘制组件
+    Dimension getPReferredSize()
+    要覆盖这个方法，返回这个组件的首选大小
+    FontMetrics getFontMetrics(Font f)
+    获取给定字体的度量。FontMetrics类是LineMetrics的早先版
+    void setCursor(Cursor cursor)
+    用光标图像设置给定的光标
+
+    java.awt.Window Container的子类  Component的子类
+    void toFront()
+    将这个窗口显示在其他窗口前面
+    void toBack()
+    将这个窗口移到桌面窗口栈的后面，并相应的排列所有可见窗口
+    boolean isLocationByPlatFrom()
+    void setLocationByPlatFrom()
+    获取或设置locationByPlatFrom属性。这个属性在窗口显示之前被设置，由平台选择一个合适的位置
+    void pack()
+    调整窗口大小，要考虑到其里面组件的首选大小
+
+    java.awt.Frame extends Window implements MenuContainer
+    boolean isResizeable()
+    void setResizeable(boolean b) resizable可调整大续爱的
+    获取或设置resizable属性。这个属性设置后，用户可以自己随意拉长
+    void setTitle()
+    设置标题
+    Image getIconImage()
+    void setIconImage()
+    获取或设置iconImage属性，确定图标
+    boolean isUndecorated() Undecorated可修饰的
+    获取或设置undecorated属性。这个属性设置后，取消 框架中的标题，关闭按钮等这样的装饰。必须在框架显示之前，调用这个方法
+    int getExtendedState() 扩张状态
+    void setExtendedState(int state) 以下是状态值
+        Frame.NORMAL
+        Frame.ICONIFIED 图标化
+        Frame.MAXIMIZED_HORIZ 最大化水平的
+        Frame.MAXIMIZED_VERT 最大化
+        Frame.MAXIMIZED_BOTH 两边水平的
+
+
+    java.swing.JFrame extends Frame implements RootPaneContainer 根窗口
+    Container getContentPane()
+    返回这JFrame的内容窗格对象
+    Component add(Component c)
+    将一个给定的组件添加到该框架的内容窗格中
+    oid setJMenuBar(JMenu menuBar)
+    为这个框架设置菜单栏
+
+
+    java.awt.Color extends Paint
+    Color(int r,int b int g)
+    创建一个元素
+
+
+
+
+
+
+

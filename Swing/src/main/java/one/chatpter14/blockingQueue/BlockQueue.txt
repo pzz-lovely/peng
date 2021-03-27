@@ -1,0 +1,55 @@
+
+    java.util.concurrent.BlockingQueue<E> interface
+    E element()
+    返回队列的头部，队列为空 抛出 NoSuchElementException
+    E peek()
+    返回队列的头部 队列空 返回 null
+    ----------------------添加方法
+    boolean add(E e)
+        添加一个元素，队列满了 抛出 IllegalStateException异常
+    boolean offer(E)
+    boolean offer(E ,long timeout,TimeUnit unit)
+    添加一个元素并返回true 队列满 返回false
+    void put(E e)
+    添加一个元素 队列满 则阻塞
+
+    E poll(long timeout,TimeUnit unit)
+    移出并返回队列的头元素 队列为空返回null
+    boolean remove(Object object)
+    移出并返回头元素 队列空 抛出 NoSuchElementException
+    E take()
+    移出并返回头元素 队列空 阻塞
+
+    java.util.concurrent.ArrayBlockingQueue<E> extends AbstractQueue implements BlockQueue
+    ArrayBlockingQueue(int capacity)
+    ArrayBlockingQueue(int capacity,boolean fair)
+    构造一个带有指定容量和公平性设置的阻塞队列。该队列用循环数组来实现。
+
+    java.util.concurrent.LinkedBlockingQueue<E> extends AbstractQueue implements BlockQueue
+    java.util.concurrent.LinkedBlockingDeque<E> extends AbstractQueue implements BlockingDeque 双端队列 只不过多了后置添加前置 添加
+    LinkedBlockingQueue()
+    LinkedBlockingDeque()
+    构造一个无上限的阻塞队列或双向队列，用链表实现
+    LinkedBlockingQueue(int capacity)
+    LinkedBlockingDeque(int capacity)
+    根据指定容量构建一个有限的阻塞队列或双向队列，用链表实现
+
+    java.util.concurrent.DelayQueue<E extends Delayed>
+    DelayQueue()  Delay延迟
+    构造一个包含Delayed元素的无界的阻塞时间有限的 阻塞队列。只有那些延迟已经超过时间的元素可以从队列中移出
+
+    java.util.concurrent.Delayed
+    long getDelay(TimeUnit unit)
+    得到该对象的延迟，用给定时间单位进行度量
+
+    java.util.concurrent.PriorityBlockingQueue<E>
+    PriorityBlockingQueue()
+    PriorityBlockingQueue(int initialCapacity)
+    PriorityBlockingQueue(int initialCapacity,Comparator<? super E>
+    构造一个无边界的阻塞优先队列，用堆实现。
+        参数: initialCapacity 优先队列的初始容量。默认是11
+        comparator 用来对元素进行比较的比较器，入门没有指定，则元素必须实现Comparator接口
+
+
+
+

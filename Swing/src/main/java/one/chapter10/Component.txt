@@ -1,0 +1,27 @@
+    Swing包下的提供一种非常实用的机制来封装命令，并将它们连接到多个事件源，这就是Action接口。一个动作是一个封装下列内容的对象
+        1.命令的说明 (一个文本字符串和一个可选图标)
+        2.执行命令所需要的参数
+
+
+    javax.swing.JComponent extends Container
+    void paintComponent(Graphics g)
+    覆盖这个对象来描述 应该如何绘制自己的组件
+    Color getBackground()
+    void setBackground(Color c)
+    获取或设置背景颜色
+    Color getForeground()
+    void setForeground(Color c)
+    获取或设置前景颜色
+    ActionMap getActionMap()
+    返回关联动作映射键(可以是任意的对象)和动作对象的映射
+    InputMap getInputMap(int flag)
+    获得按键映射到动作键的输入映射
+        参数 flag 触发动作的键盘焦点条件
+
+    void setBorder(Border border)
+    设置这个组件的边框
+    void setToolTipText(String text)
+    设置当鼠标停留在组件上时显示在工具提示中的文本
+
+
+

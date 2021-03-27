@@ -1,0 +1,41 @@
+日历类的操作calendar
+abstract Calendar抽象类。
+GregorianCalendar子类
+在使用 Calendar类获取时间数值一般丢需要补0操作，但是获得的日期时间并不是Calendar主要作用，这个类主要是使用的是日历的计算
+如果此时没有采用这样的操作类进行日期的计算处理，而是使用Long进行加速，那么所得到的日期时间一定是不准确的。
+构造方法;使用protected保护
+
+方法:
+    static Calendar getInstance()
+    获取Calendar类的实例 源码里面根据时区来创建
+    int get(int field)
+    获取成员结构的日期或时间数据。根据Calendar中的 常量，比如 Day_OF_month DAY_OF_YEAR..
+    void set(int field,int value)
+    设置指定成员结构的数据内容
+    void add(int field,int amount)
+    在指定的结果上进行加法计算
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

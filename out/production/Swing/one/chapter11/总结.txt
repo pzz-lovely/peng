@@ -1,0 +1,17 @@
+    java事件采用的是面向对象方法，所有的事件都是由java.util包中的EventObject扩展而来的。
+    EventObject有个子类AWTEvent，它是所有AWT事件类的父类。
+    AWT将事件分为底层(low-level)事件和语义(semantic)事件
+        语义事件是表示用户动作的事件 如 点击按钮
+        底层事件是形成那些事件的事件 如: 在点击按钮时，包括恶按下鼠标、连续移动鼠标，抬起鼠标
+        下面是java.awt.event包中最常用的语义事件类
+        ActionEvent(对应按钮点击、菜单选择。选择列表 或在文本框中 ENTER)
+        AdjustmentEvent(用户调节滚动条)
+        ItemEvent(用户从复选框或列表框中选择一项)
+        常用的5个底层事件类是:
+        KetEvent(一个键被按下或释放)
+        MouseEvent(鼠标键被按下、释放 、移动或拖动)
+        MouseWheelEvent(鼠标滚轮被转动)
+        FocusEvent(某个组件获得焦点或失去焦点)
+        WindowEvent(窗口状态被改变)
+    常用的适配器类
+        FocusAdapter MouseMotionAdapter KeyAdapter WindowAdapter MouseAdapter

@@ -1,0 +1,33 @@
+    java.awt.Graphics
+    Color getColor
+    void setColor(Color c)
+    获取或设置 颜色
+    Font getFont()
+    void setFont(Font font)
+    获取或设置字体
+    void drawString(String str,int x ,int y)
+    采用当前字体和颜色绘制一个字符串
+    boolean drawImage(Image img,int x,int y,ImageObserver observer)
+    绘制一幅非比例图像 observer 绘制进程中以通告为目的的对象
+    boolean drawImage(Image img,int x,int y ,int width ,int height,ImageObserver observer)
+    绘制一幅比例图像。系统按照比例将图像放入给定宽和高的区域
+    void copyArea(int x,int y,int width,int height,int dx,int dy)
+    拷贝屏幕的一块区域
+        x 原始区域左上角的 x坐标
+        y 原始区域左上角的 y坐标
+        width 宽
+        height
+        dx 原始区域到目标区域的水平距离
+        dy 原始区域到 目标区域的垂直距离
+
+    java.awt.Graphics2D extends Graphics
+    Paint getPaint()
+    void setPaint(Paint p)
+    获取或设置这个图形环境的绘制属性。Color类实现了Paint接口。因此，可以使用这个方法将绘制属性设置为纯色
+   void fill(Shape s)
+   用当前颜料填充颜色
+    FontRenderContext getFontRenderContext()
+    返回这个图形文本中，指定字体特征的字体绘制环境
+    void drawString(String str,float x ,float y)
+    采用当前的字体和颜色绘制 一个字符串
+

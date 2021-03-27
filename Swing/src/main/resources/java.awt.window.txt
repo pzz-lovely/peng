@@ -1,0 +1,11 @@
+方法:
+    void toFront()
+    将这个窗口显示在其他窗口前面
+    void toBack()
+    将这个窗口移动到桌面窗口栈的后面，并相应地重新排序所有的可见窗口
+    boolean isLocationByPlatform()
+    void setLocationByPlatform(boolean b)
+    获取或设置locationByPlatform属性
+
+
+

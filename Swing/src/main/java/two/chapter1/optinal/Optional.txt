@@ -1,0 +1,31 @@
+    Optional<T>对象是一种包装器对象，要么包装了类型T的对象，要么没有包装任何的对象。
+    对于第一种情况，我们称这种值为 存在的。
+    Optional<T>类型被当作一种更安全的方式，用来替代类型 T的引用
+
+    java.util.Optional
+    T orElse(T other)
+    产生 这个Optional的值，或者在该Optional为空时，产生other
+    T orElseGet(Supplier<? extends T> other)
+    产生这个Optional的值，或者在该Optional为空时，产生调用other的结果
+    <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier)
+    产生这个Optional的值，或者在该Optional为空时，抛出exceptionSupplier的结果
+    void ifPresent(Consumer<? super T> consumer)
+    如果该Optional不为空，那么就将它的值传递个consumer
+    <U> Optional<U> map(Function<? super T,? extends U> mapper)
+    产生将该Optional的值传递给mapper后的结果，只要这个Optional不为空且结果不为null，否则产生一个空Optional
+
+    T get()
+    产生这个 Optional的值，或者在该Optional为空时，抛出一个NoSuchElementException对象
+    boolean isPresent()
+    如果该Optional不为空，则返回true
+
+    static <T> Optional<T> of(T values)
+    static <T> Optional<T> ofNullable(T value)
+    产生一个具有给定值的optional。如果value为null，那么第一个方法会抛出一个NullPointerException对象，而第二个方法会产生一个空Optional
+    static <T> Optional<T> empty()
+    产生一个空Optional
+
+    <U> Optional<U> flatMap(Function<? super T,Optional<U>> mapper)
+    产生将mapper应用与当前的Optional值所产生的结果，或者在当前Optional为空时，返回一个空Optional
+
+

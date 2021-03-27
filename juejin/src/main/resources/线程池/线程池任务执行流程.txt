@@ -1,0 +1,61 @@
+    execute()方法
+    execute()方法是线程池提交任务的方法之一，也是最核心的方法
+    //提交任务，任务并非立即执行，
+    public void execute(Runnable command){
+        if(command == null)
+            throws new NullPointException();
+        //控制变量(高3位存储状态，低29位存储工作线程的数量)
+        int c = ctl.get();
+        //1.如果工作线程数量小于核心数量
+        if(workerCountOf(c) < corePoolSize){
+            //就添加一个工作线程(核心)
+            if(addWorker(command,true)
+                return;
+            c = ctl.get();
+        }
+        //2.如果达到了核心数量且线程池也是运行状态，任务入队列
+        if(isRunning(c) && workQueue.offer(command)){
+            int recheck = ctl.get();
+            //再次检查线程池状态，如果不是运行状态，就移出任务并执行 拒绝策略
+            if(!isRunning(recheck) && remove(command))
+                reject(command);    //执行拒接策略
+            //容错检查工作线程数量是否为0，如果为0就创建一个
+            else if(workerCountOf(recheck) == 0 )
+                addWorker(null,false);
+        }
+        //任务入队列失败，尝试创建非核心工作线程
+        else if(!addWorker(command,false))
+            //非核心工作线程创建失败，执行拒接策略
+            reject(command);
+    }
+    提交任务的过程如下:
+        1.工作线程数量小于核心数量，创建核心线程
+        2.达到核心数量，进入任务非核心线程
+        3.任务队列满了，创建非核心线程
+        4.达到最大数量，执行拒接策略
+    addWorker()方法
+        这个方法主要用来创建一个工作线程，并启动之，其中会做线程池状态、工作线程数量等各种检测。
+        private boolean addWorker(Runnable firstTask,boolean core){
+            //判断有没有资格创建新的工作线程
+            //主要是一些状态/数量的检查等等
+            retry:
+            for(;;){
+                int c = ctl.get();
+                int rs = runStateOf(c);
+                //线程池状态检查
+                if(rs >= SHUTDOWN && (firstTask == null && !workQueue.isEmpty()))
+                    return false;
+                for(;;){
+                    int wc = workerCountOf(c);
+                    if(wc >= CAPACITY || wc >= (core ? corePoolSize : maximumPoolSize))
+                        return false;
+                    //数量加1并跳出循环
+                    if(compareAndIncrementWorkerCount(c))
+                        break retry;
+                    c = ctl.get();
+                    if(runStateOf(c) != rs)
+                        continue retry;
+                    //else CAS failed due to workerCount change;retry inner loop
+                }
+            }
+        }

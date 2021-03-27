@@ -1,0 +1,46 @@
+    任何支持GUI操作环境都要不断的地监视按键或者点击鼠标这样的事件
+    在java中，所有的事件对象最终派生与java.util.EventObject类，当然每个事件类型还有子类，例如ActionEvent和WindowEvent
+    不同的事件源可以产生不同类别的事件。
+    AWT事件处理机制:
+        1.监听器对象是一个实现了特定监听接口(listener interface)的类的实例
+        2.事件源是一个能够注册监听器对象并发送事件对象的对象
+        3.当事件发生时，事件源将事件对象传递给所有的监听器
+        4.监听器对象利用事件对象中的信息如何做出对事件做出响应
+
+
+    java.awt.event.ActionEvent
+    String getActionCommand()
+    返回与这个动作事件关联的命令字符串。如果这个动作事件源自一个按钮，命令字符串就等于按钮标签,除非已经用setActionCommand方法改变命令字符串
+
+    java.beans.EventHandler
+    static <T> T create(Class<T> listenerInterface,Object target,String action)
+    static <T> T create(Class<T> listenerInterface,Object target,String action,String eventProperty)
+    static <T> T create(Class<T> listenerInterface,Object target,String action ,String eventProperty,String
+    listenerMethod)
+    构造实现给定接口的一个代理类的对象。接口的指定方法或所有方法会在目标对象上执行给定动作
+    这个动作可以是个方法名，或者是 目标的一个属性。如果是一个属性，则执行它的设置方法。例如动作text会转换成setText方法调用
+    事件属性由一个或多个点号(.)分隔成的属性名组成。第一个属性从监听器方法的参数读取，第二个属性由得到的对象读取，依次类推。最终结果会成为动作的参数。例如，属性source.text会转换成getSource和getText方法调用
+
+
+    java.util.EventObject
+    Object getSource()
+    返回发生这个事件的对象的一个引用
+
+
+    java.swing.UIManager
+    static UIManager.LookAndFeelInfo[] getInstalledLookAndFeels
+    获取一个用于描述已安装的观感实现的对象数组
+    static setLookAndFeel(String className)
+    利用给定的类型设置当前的观感。例如java.swing.plaf.metal.MetalLookAndFeel
+
+    java.swing.UIManager.LookAndFeelInfo
+    String getName()
+    返回观感的名称
+    String getClassName()
+    返回观感实现泪名称
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+    putValue和getValue方法允许存储和检索动作对象中任意名/值。有两个重要的预定义字符串:Action.NAME和Action.SMALL_ICON，用于将动作的名字和图标存储到一个动作对象中。
+        Action.putValue(Action.NAME,"blue")
+        Action.putValue(Action.SMALL_ICON,new ImageIcon("blue-ball.gif"))
+        预定义 的动作表名称
+        NAME    动作名称
+        SMALL_ICON 存储小图标的地方；显示在按钮、菜单项或工具栏中
+        SHORT_DESCRIPTION  图标的简要说明；显示在工具提示中
+        LONG_DESCRIPTION 图标的详细说明；
+        MNEMONIC_KEY 快捷键缩写；显示在菜单项中
+
+
+
+
+    javax.swing.Action extends ActionListener 超父类 EventListener
+    boolean isEnabled()
+    void setEnabled(boolean b)
+    获取或设置这个动作的enable属性
+    void putValue(String key,String value)
+    将名/值对放置在动作对象内
+        参数key 用动作对象存储性能的名字 。它可以是一个字符串，但预定义了几个名字
+        value 与名关联的对象
+    void actionPerformed(ActionEvent event)
+    void setEnabled(boolean)
+    boolean isEnabled()
+    void putValue(String key,Object value)
+    Object getValue(String key)
+    void addPropertyChangeListener(PropertyChangeListener listener)
+    void removePropertyChangeListener(PropertyChangeListener listener)
+
+    javax.swing.KeyStroke
+    static KeyStroke getKeyStroke(String description)
+    根据一个便于人们阅读的说明创建一个按键(由空格分隔符的字符串序列)。这个说明以0个或多个修饰符shift control ctrl meta alt altGraph 开始，以由 typed和单个字符构成的字符串(例如:
+    typed a )或者一个可选的事件说明符(pressed默认，或released)紧跟一个键码结束。以VK_前缀开始的键码对应 一个KeyEvent常量，例如 INSERT 对应  KeyEvent.VK_INSERT
+
+

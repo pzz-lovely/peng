@@ -1,0 +1,63 @@
+   执行器(Executor)类有许多静态工厂方法来构建线程池
+   newCachedThreadPool  必要时创建新线程；空闲线程会被保留60秒
+   newFixedThreadPool   该池包含固定数量的线程；空闲线程会一直被保留
+   newSingleThreadExecutor 只有一个线程的池，该线程顺序执行每一个提交的任务
+   newScheduledThreadPool  用于预定执行的而构建的固定线程池
+   newSingleThreadScheduledExecutor 用于预定执行而构建的单线程池
+
+   java.util.concurrent.Executors
+   static ExecutorService newCachedThreadPool()
+   返回一个带缓存的线程池，该池在必要的时候创建线程，在线程空闲的60秒之后终止线程
+   static ExecutorService newFixedThreadPool(int thread)
+   返回一个线程池，该池中的线程数有参数指定
+   static ExecutorService newSingleThreadExecutor()
+   返回一个执行器，它在一个单一的线程中依次执行各个任务
+
+    ScheduledExecutorService接口具有预定执行(Scheduled Execution)或重复执行任务而设计的方法。
+      Executors类的newScheduledSThreadPool和newSingleThreadScheduledExecutor方法返回实现了ScheduledExecutorService接口的对象。
+   static ScheduledExecutorService newScheduledThreadPool(int threads)
+   返回一个线程池，它使用给定的线程数来调度任务。
+
+   java.util.concurrent.ExecutorService interface
+   Future<T> submit(Callable<T> task)
+   Future<T> submit(Runnable task,T result)
+   Future<T> submit(Runnable task)
+   提交指定的任务去执行
+   void shutdown()
+   关闭服务，会先完成已经提交的任务而不再接收新的任务。
+   T invokeAny(Collection<Callable<T>> task)
+   T invokeAny(Collection<Callable<T>> tasks,long timeout,TimeUnit unit)
+   执行给定的任务，返回其中一个任务的结果。第二个方法若发生超时，抛出一个TimeoutException异常
+   List<Future<T>> invokeAll(Collection<Callable<T>> tasks)
+   List<Future<T>> invokeAll(Collection<Callable<T>> tasks,long timeout,TimeUnit unit)
+   执行给定的任务，返回所有任务的结果。第二个方法方法若发生超时，抛出一个TimeoutException
+
+   java.util.concurrent.ExecutorCompletionService<V>
+   ExecutorCompletionService(Executor e)
+   构建一个执行器完成服务来收集的给定执行器的结果
+   Future<V> submit(Callable<V> task)
+   Future<V> submit(Runnable task,V result)
+   提交一个任务给底层的执行器
+   Future<V> take()
+   移出一下一个已完成的结果，如果没有任何的已完成的的结果可用 则阻塞
+   Future<V> poll()
+   Future<V> poll(long time,TimeUnit unit)
+   移出下一个已完成的结果，如果没有任何已完成结果可用则返回null。第二个方法将等待给定的时间。
+
+
+
+   java.util.concurrent.ThreadPoolExecutor
+   int getLargestPoolSize()
+   返回线程池在该执行器生命周期中的最大尺寸
+
+   java.util.concurrent.ScheduledExecutorService
+   ScheduledFuture<V> schedule(Callable<V> task,long time,TimeUnit unit)
+   ScheduledFuture<?> schedule(Runnable task,long time,TimeUnit unit)
+   预定在指定的时间之后执行任务
+   ScheduledFuture<?> scheduleAtFixedRate(Runnable task,long initialDelay,long period,TimeUnit unit)
+   预定在初始的延迟结束后，周期性地运行给定的任务，周期长度是period。
+   ScheduledFuture<?> scheduleWithFixedDelay(Runnable task,long initialDelay,long delay,TimeUnit unit)
+   预定在初始的延迟结束后周期性地运行给定的任务，在一次调用完成和下一次调用开始之间有长度delay的延迟。
+
+
+

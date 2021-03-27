@@ -1,0 +1,44 @@
+    锁是用来保护代码片段，任何时刻只能有一个线程访问执行被保护的代码
+    锁可以管理试图进入被保护代码段的线程
+    锁可以拥有一个或多个相关的条件对象
+    每个条件对象管理那些已经进入被保护的代码段但还不能运行的线程
+
+
+    java.util.concurrent.locks.Lock interface
+    void lock()
+    获取这个锁；如果锁同时被另一个线程持有则发生阻塞
+    void unlock()
+    释放锁
+    Condition newCondition()
+    返回一个与该锁相关的条件对象
+    boolean tryLock()
+    尝试获取锁而没有发生阻塞；如果成功返回真。这个方法会抢夺可用的锁，即使该所有公平加锁策略，即使其他线程已经等待很久也是如此
+    boolean tryLock(long time,TimeUnit unit)
+    尝试获得锁，阻塞时间不会超过给定的值；如果成功返回true
+    void lockInterruptibly()
+    获得锁，但是会不确定地发生阻塞。如果线程被中断了，抛出一个InterruptedException
+
+    java.util.concurrent.locks.ReentrantLock
+    ReentrantLock()
+    构建一个可以用来保护临界区的可重入锁
+    ReentrantLock(boolean fair)
+    构建一个带有公平策略的锁。一个公平锁偏爱等待时间最长的线程。但是，这一公平的保证会大大降低性能。所以默认情况下，锁没有强制为公平的
+
+
+    java.util.concurrent.locks.Condition
+    void await()
+    将线程放到条件的等待集中
+    void signalAll()
+    解除该条件的等待集中的所有线程的阻塞状态
+    void signal()
+    从该条件集中随机选择一个线程，解除其阻塞状态
+    boolean await(long time,TimeUnit unit)
+    进入该条件的等待及，直到线程从等待集中移出或等待了指定的时间之后才解除阻塞。如果因为等待的时间到了 就返回false,否则返回true
+    void awaitUninterruptibly()
+    进入该条件的等待集，直到线程从等待集移出才解除阻塞。如果线程被中断，该方法不会抛出InterruptedException
+
+    java.util.concurrent.locks.ReentrantReadWriteLock implements Lock
+    Lock readLock()
+    得到一个可以被多个读操作公用的读锁，但会排斥所有写操作
+    Lock writeLock()
+    得到一个写锁，排斥所有其他的读操作和写操作。

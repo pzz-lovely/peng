@@ -1,0 +1,13 @@
+java.awt.Toolkit 抽象类  工具包
+    static Toolkit getDefaultToolkit()
+    返回默认的工具箱
+    Dimension getScreenSize()
+    返回屏幕的尺寸
+    Cursor createCustomCursor(Image image,Point hotSpot,String name)
+    创建一个定制光标对象
+
+    java.swing.ImageIcon implements Icon
+    ImageIcon(String filename)
+    构建一个图标，其图像存储在一个文件中
+    Image getImage()
+    获取该图标的图像

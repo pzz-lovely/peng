@@ -1,0 +1,22 @@
+    java.swing.JTextArea
+    JTextArea()
+    JTextArea(int rows,int cols)
+    JTextArea(String text,int rows,int cols)
+    构造一个新的文本区对象
+    void setColumns(int cols)
+    设置文本区应该使用的首选列数
+    void setRows(int rows)
+    设置文本区应该使用的首选行数
+    void setLineWrap(boolean wrap)
+    打开或关闭换行
+    void setWrapStyleWord(boolean word)
+    如果word是tru，超过的行会在字边框处换行。如果为false，超过的行被截断而不考虑自边框
+    void setTabSize(int c)
+    将制表符设置为c列。
+
+
+    javax.swing.JScrollPane
+    JScrollPane(Component c)
+    创建一个滚动窗格，用来显示指定组件的内容
+
+

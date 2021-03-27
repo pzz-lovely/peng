@@ -1,0 +1,35 @@
+    javax.swing.BorderFactory
+    static Border createLineBorder(Color c)
+    static Border createLineBorder(Color color,int thickness)
+    创建一个简单的直线边框
+    static MatteBorder createMatteBorder(int top,int left,int bottom,int right,Color color)
+    static MatteBorder createMatteBorder(int top,int left,int bottom,int right,Icon tileIcon)
+    创建一个用color颜色或一个重复(repeating)图标填充的粗的边框
+    static Border createEmptyBorder()
+    static Border createEmptyBorder(int top,int left,int right,int bottom,int right,Icon tileIcon)
+    创建一个空边框
+    static Border createEtchedBorder()
+    static Border createEtchedBorder(Color highlight,Color shadow)
+    static Border createEtchedBorder(int style)
+    static Border createEtchedBorder(int style,Color highlight,Color shadow)
+    创建一个具有3D效果的直线边框
+        参数
+            highlight,shadow 用于3D效果的颜色
+            type EtchedBorder.RAISED 和 EtchedBorder.Lowered之一
+
+
+    javax.swing.border.SoftBevelBorder
+    SoftBevelBorder(int type)
+    SoftBevelBorder(int type,Color highlight,Color shadow)
+    创建一个带有柔和边角的斜面边框。
+        参数 type  BevelBorder.Lowered 和 BevelBorder.Raised
+        highlight shadow 用于3D效果的颜色
+
+    javax.swing.border.LineBorder
+    public LineBorder(Color color,int thickness,boolean roundedCorners)
+    用指定的颜色和粗细创建一个直线边框。如果roundedCorners为true，则边框有 圆角
+
+
+
+
+

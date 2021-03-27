@@ -1,0 +1,127 @@
+    Executor线程池顶级接口
+    ExecutorService，线程次级接口，对Executor做了一些扩展，增加一些功能
+    ScheduledExecutorService，对ExecutorService 做了一些扩展，增加一些定时任务的相关功能
+    AbstractExecutorService，抽象类，运用模板方法设计模式实现了一部分方法；
+    ThreadPoolExecutor，普通线程类，这也是我们常说的线程池，包含最基本的一些线程池操作相关的方法实现。
+    ScheduledThreadPoolExecutor，定时任务线程池类，用于实现定时任务相关功能
+    ForkJoinPool，新型线程池类，java7中新增的线程池类，基于工作窃取理论实现，运用于大任务拆小任务，任务无限多的场景
+    Executors，线程工具类，定义了一些快速实现线程池的方法（谨慎使用）
+
+    Executor接口
+    public interface Executor{
+        //执行无返回值得任务
+        void execute(Runnable command);
+    }
+
+    ExecutorService
+    线程池次级接口，对Executor做了一些扩展，主要增加了关闭线程池、执行有返回值任务、批量执行任务的方法。
+    public interface ExecutorService extends Executor{
+        //关闭线程池，不在接收新任务，但已提交的任务会执行完成
+        void shutdown();
+
+
+        // 立即关闭线程池，尝试停止正在运行的任务，未执行的任务将不再执行
+        // 被迫停止及未执行的任务将以列表的形式返回
+        List<Runnable> shutdownNow();
+// 检查线程池是否已关闭
+    boolean isShutdown();
+
+        // 检查线程池是否已终止，只有在shutdown()或shutdownNow()之后调用才有可能为true
+        boolean isTerminated();
+
+        // 在指定时间内线程池达到终止状态了才会返回true
+        boolean awaitTermination(long timeout, TimeUnit unit){
+        throws InterruptedException;
+    }
+
+        //执行有返回的任务，任务的返回值为task.call()的结果
+        <T> Future<T> submit(Callable<T> task);
+
+        //执行有返回值得任务，任务的返回值为这里传入的result
+        //当然只有当前任务执行完成了调用get()时才会返回
+        <T> Future<T> submit(Runnable T result);
+
+        // 执行有返回值的任务，任务的返回值为null
+        // 当然只有当任务执行完成了调用get()时才会返回
+        Future<?> submit(Runnable task);
+
+        //批量执行任务，只有当这些任务都完成了这个方法才会返回
+        <T> List<Future<T>> invokeAll(Connection<? extends Callable<T>> tasks);
+            throws InterruptedException;
+
+        //返回任意一个已完成任务的执行结果，未执行的完成的任务将被取消
+        <T> T invokeAny(Connection<? extends Callable<T>> tasks,long timeout,TimeUnit unit);
+
+        //在指定时间内如果有任务已完成，则返回任意一个已完成任务的执行结果，未执行完成的任务将被取消
+        <T> T invokeAny(Collection<? extends Callable<T>> tasks,long timeout, TimeUnit unit)
+        throws InterruptedException, ExecutionException, TimeoutException;
+
+
+    ScheduledExecutorService
+    对ExecutorService做了一些扩展，增加一些定时任务相关的功能，主要包含两大类:执行一次，重复多次执行
+    public interface ScheduledExecutorService extends ExecutorService {
+        //在指定延迟后执行一次
+        public ScheduledFuture<?> schedule(Runnable command,long delay,TimeUnit unit);
+
+        //在指定延迟后执行一次
+        public <V> ScheduledFuture<V> schedule(Callable<V> callable,long delay,TimeUnit unit);
+
+        //在指定延时后开始执行，并在之后以指定时间间隔重复执行(间隔不包含任务执行的时间)
+        //相当于之后的延时以任务开始计算
+        public ScheduledFuture<?> scheduleAtFixedRate(Runnable command,
+                    long initialDelay,
+                    long period,
+                    TimeUnit unit);
+
+        //在指定延迟后开始执行，并在之后以指定延迟重复执行(间隔包含任务执行的时间)
+        //相当于之后的延时以任务结束计算
+        public ScheduledFuture<?> scheduleWithFixedDelay(Runnable command,
+                        long initialDelay,
+                        long delay,
+                        TimeUnit unit);
+    }
+
+    AbstractExecutorService
+    抽象类，运用模板方法设计模式实现了一部分方法，主要为执行有返回值任务，批量执行任务的方法
+
+
+定时任务线程池用的是哪种队列来实现的？
+答：延时队列。定时任务线程池中并没有直接使用并发集合中的DelayQueue，而是自己又实现了一个DelayedWorkQueue，不过跟DelayQueue的实现原理是一样的。
+延时队列使用什么数据结构来实现的呢？
+答：堆（DelayQueue中使用的是优先级队列，而优先级队列使用的堆；DelayedWorkQueue直接使用的堆）。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

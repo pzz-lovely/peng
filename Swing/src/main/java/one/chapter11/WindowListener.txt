@@ -1,0 +1,24 @@
+    窗口监听器必须实现WindowListener接口的类的对象
+    每个含有多个方法的AWT监听器接口都配有一个适配(adapter)器类，这个类实现了接口中的所有方法，但每个方法没有做任何事情
+
+    java.awt.event.WindowListener
+    void windowOpened(WindowEvent e)
+    窗口打开后调用这个方法
+    void windowClosing(WindowEvent e)
+    在用户窗口管理器命令关闭窗口时调用这个方法。
+    void windowClosed(WindowEvent e)
+    窗口关闭后调用这个方法
+    void windowIconified(WindowEvent e)
+    窗口图标化后调用这个方法
+    自己看书463
+
+    java.awt.event.WindowStateListener
+    void windowStateChanged(WindowEvent event)
+    窗口被最大化，图标化或恢复为正常大小时调用这个方法
+
+    java.awt.event.WindowEvent
+    int getNewState()
+    int getOldState()
+    返回窗口状态改变事件中的新，旧状态
+        详情见 453页
+

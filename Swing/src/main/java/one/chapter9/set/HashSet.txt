@@ -1,0 +1,16 @@
+链表和数组可以按照人们的意愿排序元素的次序
+散列表(hash Table)可以快速的地查找所需要的对象。
+散列表为每个对象技术一个整数，成为散列码。
+java中散列表是由链表数组hash[]实现。每个列表称为桶[元素] 每个散列表就是桶中的元素。
+想要查找表中对象的位置，先计算好散列码，然后与桶的总数取余，所得到的就是保存这个元素的桶的索引
+遇到桶占满的情况，这是它被称为散列冲突hash collision 这是 需要用新对象与桶中的所有对象进行比较，查看这个对象是否已经存在。
+    HashSet里面有 HashMap 根据他存值
+    HashSet()
+    创建一个空散列表
+    HashSet(Collection<? extends E> elements)
+    根据集合中的元素 添加到 这个散列表
+    源码中：Math.max(根据这个集合的元素的个数 / 0.75+1 或者 16) 创建HashMap的长度
+    HashSet(int initialCapacity)
+    构建有一个空的具有指定容量(桶数)的散列集
+    HashSet(int initialCapacity,float loadFactor)
+    构建一个具有指定容量和装填因子(一个0.0~10之间的数值，确定散列表填充的百分百)

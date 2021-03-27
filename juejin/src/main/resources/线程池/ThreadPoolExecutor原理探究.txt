@@ -1,0 +1,225 @@
+    线程池主要解决两个问题:一方面当执行大量异步任务时候线程池能够提供较好的性能，这是因为使用线程池可以使每个任务的调用开销减少(因为线程吃线程是可以复用的)。另一方面线程池提供了一个资源限制和管理的手段，拨入当执行一系列任务时候对线程的管理，每个ThreadExecutor也保留了一些基本的统计数据，另外，线程池提供许多可调参数和可扩展性钩子。程序员可以使用更方便
+    工厂方法比如newCachedThreadPool（无限线程池，线程自动回收），newFixedThreadPool（固定大小的线程池）newSingleThreadExecutor（单个线程），当然用户还可以自定义。
+    类图架构
+        Executors是一个工具类，里面提供了静态方法，根据用户选择返回不同的线程池实例
+        ThreadPoolExecutor继承了AbstractExecutorService，成员变量ctl是个原子变量用来记录线程池状态和线程池个数，类似于ReentrantReadWriteLock使用一个变量存放两种信息
+        Integer类型是32位二进制标示，其中高3位用来表示线程池状态，后面 29位用来记录线程池线程个数。
+        //用来标记线程池状态(高三位),线程个数(低29位)
+        //默认是RUNNING状态，线程个数为0
+        private final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING,0));
+        //线程个数掩码位数
+        private static final int COUNT_BITS = Integer.SIZE- 3;
+        //线程最大个数(低29位)00011111111111111111111111111111
+        private static final int CAPACITY = (1<<COUNT_BITS)-1;
+
+        //（高3位）：11100000000000000000000000000000
+        private static final int RUNNING    = -1 << COUNT_BITS;
+
+        //（高3位）：00000000000000000000000000000000
+        private static final int SHUTDOWN   =  0 << COUNT_BITS;
+
+        //（高3位）：00100000000000000000000000000000
+        private static final int STOP       =  1 << COUNT_BITS;
+
+        //（高3位）：01000000000000000000000000000000 整理
+        private static final int TIDYING    =  2 << COUNT_BITS;
+
+        //（高3位）：01100000000000000000000000000000 已终止
+        private static final int TERMINATED =  3 << COUNT_BITS;
+    方法:
+        // 获取高三位 运行状态
+        private static int runStateOf(int c)     { return c & ~CAPACITY; }
+
+        //获取低29位 线程个数
+        private static int workerCountOf(int c)  { return c & CAPACITY; }
+
+        //计算ctl新值，线程状态 与 线程个数
+        private static int ctlOf(int rs, int wc) { return rs | wc; }
+    线程池状态含义:
+        RUNNING: 接收新任务并且处理阻塞队里的任务
+        SHUTDOWN:拒接新任务但是处理阻塞队列里的任务
+        STOP:拒接新任务并且抛出阻塞队列里的任务同时会中断正在处理的任务
+        TIDYING:所有任务都执行完(包含阻塞队列里面任务) =当前线程池活动线程为0，将要调用terminated方法
+        TERMINATED:终止状态。terminated方法调用完成以后的状态
+    线程池状态转换:
+        RUNNING -> SHUTDOWN
+            显式调用shutdown()方法，或者隐式调用finalize()，它里面调用了shutdown()方法
+        RUNNING or SHUTDOWN -> STOP
+            显式调用shutdown()方法
+        SHUTDOWN -> TIDYING
+            当线程池和任务队列都为空的时候
+        STOP -> TIDYING
+            当线程池为空的时候
+        TIDYING -> TERMINATED
+            当terminated() hook方法执行完成的时候
+    线程池参数
+        corePoolSize:线程池核心线程个数
+        workQueue:用于保存等待执行的任务的阻塞队列。比如基于数组的有界ArrayBlockingQueue,基于链表的无界LinkedBlockingQueue，最多只有一个同步队列SynchronousQueue，优先级队列PriorityBlockingQueue
+        maximunPoolSize:线程池最大线程数量
+        ThreadFactory:创建线程的工厂
+        RejectedExecutionHandler:饱和策略，当队列满了并且线程个数达到maxminPoolSize后采取的策略，比如AbortPolicy(抛出异常),CallerRunsPolicy(使用调用者所在线程来运行任务)，DiscardOldestPolicy(调用pool丢弃一个任务，执行当前任务),DiscardPolicy(默默丢弃，不抛出一会吃那个)
+        keeyAliveTime:存活时间。如果当前线程池中的线程数量比基本数量要多，并且是闲置状态的话，这些闲置的线程能存活的最大时间TimeUnit,存活时间单位
+
+    线程池类型
+        newFixedThreadPool:创建一个核心线程个数和最大线程个数都为nThreads的线程池，并且阻塞队列长度为Integer.MAX_VALUE,keepAliveTime=0说明只要线程个数比核心线程个数读并且当前空闲则回收
+        //Executors工具类
+        public static ExecutorService newFixedThreadPool(int nThreads){
+            return new ThreadPoolExecutor(nThreads,nThreads,0L,
+            TimeUnit.MILLISECONDS,
+            new LinkedBlockingQueue<Runnable>());
+        }
+        //使用自定义线程创建工厂
+        public static ExecutorService newFixedThreadPool(int nThreads,ThreadFactory threadFactory){
+            return new ThreadPoolExecutor(nThreads,nThreads,new LinkedBlockingQueue<Runnable>(),threadFactory);
+        }
+
+        newSingleThreadExecutor:创建一个核心线程个数和最大线程个数都为1的线程池，并且阻塞队列长队为Integer.MAX_VALUE,keeyAlieTime=0说明只要线程个数比核心线程个数多并且当前空闲则回收
+        //Executors工具类
+        public static ExecutorService newSingleThreadExecutor(){
+                        return new FinalizableDelegatedExecutorService(1,1,
+                        0L,TimeUnit.MILLISECONDS,
+                        new LinkedBlockingQueue<Runnable>());
+        }
+
+        //使用自己的线程工厂
+        public static ExecutorService newSingleThreadExecutor(ThreadFactory threadFactory){
+            return new FinalizableDelegatedExecutorService(
+            new ThreadPoolExecutor(
+                1,1,
+                0L,TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>(),
+                threadFactory
+            );
+        }
+
+        newCachedThreadPool:创建一个按需创建线程的线程池，初始线程个数为0，最多线程个数为Integer.MAX_VALUE,并且阻塞队列为同步队列，keeyAliveTime=60说明只要当前线程60s内空闲则回收，这个特殊在于加入同步嘟咧的任务会被马上执行，同步队列里面最多只有一个任务，并且存在后马上会拿出执行
+        //Executors工具类
+        public static newCachedThreadPool(){
+            return new ThreadPoolExecutor(0,Integer.MAX_VALUE,60L,TimeUnit.SECONDS,
+            new SynchronousQueue<Runnable>()
+        };
+        //使用自定义的线程工厂
+        public static ExecutorService newCacheThreadPool(ThreadFactory threadFactory){
+            return new ThreadPoolExecutor(0,Integer.MAX_VALUE,
+            60L,TimeUnit.SECONDS,
+            new SynchronousQueue<Runnable>(),
+            theadFactory);
+        }
+
+        newSingleThreadScheduledExecutor:创建一个最小线程个数corePoolSize为1，最大Integer.MAX_VALUE,阻塞队列为DelayedWorkQueue的线程池
+        /**
+        public static ScheduledExecutorService newSingleThreadScheduleExecutor(){
+            return new DelegatedScheduledExecutorService(new ScheduledThreadPoolExecutor(1));
+        }
+
+        newSingleThreadScheduledExecutor:创建一个最小线程个数corePoolSize为1，最大为Integer.MAX_VALUE,阻塞队列为DelayedWorkQueue的线程池。
+        public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize){
+            return new ScheduledThreadPoolExecutor(corePoolSize);
+        }
+    其中Worker继承AQS和Runnable是具体承载的对象，Worker继承了AQS自己实现了简单的不可重入独占锁，其中status=0标识锁未被获取状态也就是未被锁住的状态，state=1标识锁已经被获取的状态也就是锁住的状态。
+    DefaultThreadFactory是线程工厂，newThread方法是对线程的一个分组包裹，其中poolNumber是个静态的原子变量，用来统计线程工厂的个数，threadNumber用来记录每个线程工厂创建了多少线程
+
+    源码分析:
+        public void execute(Runnable command){
+            if(command == null)
+                throw new NullPointException();
+            //获取当前线程池的状态+线程个数变量
+            int c = ctl.get();
+            //当前线程池线程个数是否小于corePoolSize,小于则开启新线程运行
+            if(workerCountOf(c) < corePoolSize){
+                if(addWorker(command,true))
+                    return;
+                c = ctl.get();
+            }
+            //如果线程池处于RUNNING状态，则添加任务到阻塞队列
+            if(isRunning(c) && workQueue.offer(command)){
+                //二次检查
+                int recheck = ctl.get();
+                //如果当前线程池状态不是RUNNING状态则从队列删除任务，并执行拒绝策略
+                if(!isRunning(recheck) && remove(command))
+                    reject(command);
+                //否者如果当前线程池线程空，则添加一个线程
+                else if(workerCountOf(recheck) == 0)
+                    addWorker(null,false);
+            }
+            //如果队列满了，则新增线程，新增失败则执行拒绝策略
+            else if(!addWorker(command,false))
+                reject(command);
+        }
+        如果当前线程池线程个数小于corePoolSize则开启新线程
+        否则添加任务到任务独立
+        如果任务队列满了，则尝试开启线程执行任务，如果线程个数>maximumPoolSize则执行拒绝策略.
+
+    重点addWorker方法:
+        private boolean addWorker(Runnable firstTask,boolean core){
+            retry:
+            for(;;){
+                int c = ctl.get();
+                int rs = runStateOf(c);
+
+                //检查队列是否只在有必要时为空(1)
+                if(rs >= SHUTDOWN &&
+                    !(rs == SHUTDOWN && !firstTask == null && !workQueue.isEmpty()))
+                    return false;
+
+                //循环cas增加线程个数
+                for(;;){
+                    int wc = workerCount(c);
+                    //如果线程个数超限则返回false
+                    if(wc >= CAPACITY || wc >= (core ? corePoolSize : maximumPoolSize))
+                        return false;
+                    //cas增加线程个数，同时只有一个线程成功
+                    if(compareAndIncrementWorkerCount(c0))
+                        break retry;
+                    //cas失败了，则看线程状态是否变化了，变化则跳到外层循环重试重新获取线程状态，否者内层循环重新cas。
+                    c = ctl.get();  //Re-read ctl
+                    if(runStateOF(c) != rs)
+                        continue retry;
+                }
+            }
+
+            //到这里说明cas成功了(2)
+            boolean workerStarted = false;
+            boolean workerAdded = false;
+            Worker w = null;
+            try{
+                //创建worker
+                final ReentrantLock mainLock = this.mainLock;
+                w = new Worker(firstTask);
+                final Thread t = w.thread;
+                if(t != null){
+                    //加独占锁，为了worker同步，因为可能多个线程调用了线程池的execute方法
+                    main.lock();
+                    try{
+                        //重新检查线程池状态，为了避免在获取锁前调用shutdown接口(3)
+                        int c = ctl.get();
+                        int rs = runStateOf(c);
+                        if(rs < SHUTDOWN ||
+                        (rs == SHUTDOWN && firstTask == null)){
+                            if(t.isAlive()) //precheck that is startable
+                                thrwo new IllegalThreadStateException();
+                            //添加任务
+                            workers.add(w);
+                            int s = workers.size();
+                            if(s > largestPoolSize)
+                                largestPoolSize = s;
+                            workerAdded = true;
+                        }
+                    }finally{
+                        mainLock.unlock();
+                    }
+                }
+            }finally {
+                if(! workerStarted)
+                    addWorkerFailed(w);
+            }
+            return workerStarted;
+        }
+        代码比较长，主要分两部分，第一部分双重循环目的是通过cas增加线程池线程个数，第二部分主要是并发安全的把任务添加到workers里面，并且启动任务执行。
+        先看第一部分的(1)
+            rs >= SHUTDOWN  && !(rs == SHUTDOWN && firstTask == null && ! workQueue.isEmpty())
+            下面这几种情况会返回false
+               当前线程状态为STOP,TIDYING,TERMINATED
+               当前线程池状态为SHUTDOWN并且有了第一个任务
+               当前线程池状态为SHUTDOWN并且任务队列为空
+        

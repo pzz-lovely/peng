@@ -1,0 +1,2 @@
+队列是一种采用FIFO模式处理的集合结构，可以利用队列进行批量数据的保存 JUC提供了两个新的阻塞队列接口:BlockingQueue(单端队列) 和 BlockingQueue(双端队列)
+    BlockingQueue类属于单端阻塞队列，所有的数据将按照FIFO算法进行保存和获取，Blocking提供一下几个子类:ArrayBlockingQueue(数组结构)、LinkedBlockingQueue(链表单端阻塞队列)、PriorityBlockingQueue(优先级阻塞队列)、SynchronousQueue(同步队列)

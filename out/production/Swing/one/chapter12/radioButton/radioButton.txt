@@ -1,0 +1,23 @@
+    javax.swing.JRadioButton
+    JRadioButton(String label,Icon icon)
+    构建一个单选钮，初始没有被选择
+    JRadioButton(String label,boolean state)
+    用给定的标签和初始化状态构造一个单选钮
+
+    javax.swing.ButtonGroup
+    void add(AbstractButton b)
+    将按钮添加到组中
+    ButtonModel getSelection()
+    返回被选择的按钮的按钮模型
+
+    java.swing.ButtonModel
+    String getActionCommand()
+    返回按钮模型的动作命令
+
+    java.swing.AbstractButton
+    void setActionCommand(String s)
+    设置按钮及器模型的动作命名。
+
+
+
+
