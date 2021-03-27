@@ -1,0 +1,1 @@
+使用 Metaspace(元空间JEP 122)代替持久代（PermGen space）。在JVM参数方面，使用 -XX:Meta Space Size 和 -XX:MaxMetaspaceSize代替原来的-XX\:PermSize和-XX:MaxPermSize。
