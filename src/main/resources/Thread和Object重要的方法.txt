@@ -1,0 +1,71 @@
+
+    1.为什么线程通信的方法wait().notify(),notifyAll()被定义在Object类?而sleep定义在Thread类里?
+        主要是因为在wait(),notify(),notifyAll是锁级别操作，而这个锁属于某个对象，不会绑定到某个线程中。对于每一个对象都是适用的。
+        Thread.wait不适合锁对象 JVM每次在run方法执行后 会调用notify()方法
+
+
+    2.用三种方式实现生产者模式
+    
+    3.join和sleep和wait期间线程的状态分别是什么?为什么?
+
+
+    wait,notify,notifyAll特点、性质
+    1.用户必须先拥有monitor
+    2.只能唤醒其中一个
+    3.属于Object类
+    4.类似功能的Condition
+    5.只会释放当前的到这把锁
+    
+    wait需要在同步代码块执行
+        让通信变得可靠，防止死锁。
+
+
+    sleep方法
+        作用:只让线程在预定的时间执行，其他时候不要占用CPU资源
+        不释放锁
+        和wait不同
+    sleep方法响应中断
+        1.抛出InterruptedException
+        2.清除中断状态
+    
+    总结:
+        sleep方法可以让线程进入Waiting状态，并且不占用CPU资源，但是不释放锁，知道规定时间后在执行，休眠期间如果被中断，会抛出异常并清除中断状态 。
+    
+    wait/notify、sleep异同
+        相同:
+            阻塞
+            响应中断
+        不同:
+            同步方法中
+                sleep可以不在同步方法中
+                wait/notify 要在同步方法中
+            释放锁
+                sleep不可以释放锁
+                wait/notify 可以释放当前得到的锁
+            指定时间
+                sleep必须传参
+                wait/notify不需要
+            所属类
+                sleep所属于当前 这个线程的对象
+                wait/notify 所属于当前获取这个锁的对象
+
+
+    join方法 不推荐用
+        作用:新的线程加入了我们，所有我们要等他执行完毕在出发。让一个主线程等待另一个子线程，或者一等多，多等一
+        用法: main等待thread1执行完毕，注意谁等谁
+    
+        源码:wait(0) 并没有人唤醒它
+            JVM实际上run方法执行后，就会调用notify()
+    
+    CountDownLatch或CyclicBarrier类 跟join一样
+    
+    yield方法
+        作用:释放我的CPU时间片，状态依然是 Runnable状态
+        定位:JVM不保证遵循
+        并不常用，但是并发包常用 AQS ConcurrentHashMap StampedLock FutureTask Exchanger PriorityBlockQueue
+        区别:
+            sleep期间，线程调度器认为它已经被阻塞了，不会把它调度起来。
+            yield只是暂时把自己的调度权让给别人，但是立刻又可以处于运行状态
+
+
+

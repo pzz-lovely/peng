@@ -1,0 +1,15 @@
+New
+    已创建，还没有启动.start()
+Runnable 可运行的
+    调用start()方法，就表示这个状态，实际上对应操作系统的两种状态 分别是
+Blocked
+    当前线程被synchronized修饰代码块，并该锁被其他线程拿走了。仅仅是针对synchronized关键字，只要是synchronized保护的代码块中，它没有拿到锁，陷入到一个等待的状态，这才叫blocked
+Waiting
+    等待状态
+Timed Waiting
+    有计时的等待状态
+Terminated 终止
+
+    阻塞
+    一般而言，把 Blocked(被阻塞)，waiting(等待),Timed_waiting(计时等待)都成为阻塞状态
+<img src="images/%E7%BA%BF%E7%A8%8B%E7%9A%846%E4%B8%AA%E7%8A%B6%E6%80%81.png" style="zoom: 150%;" />

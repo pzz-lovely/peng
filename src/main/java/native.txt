@@ -1,0 +1,8 @@
+    分析native方法
+    1.进入github（也可以进入openJDK网站）
+        1.设置interrupted中断状态为true
+        2._SleepEvent就是对应Thread.sleep方法
+        3.((javaThread*)thread)->parker()就是对应LockSupport.part方法
+        4._PartEvent就是对应synchronized同步代码块及Object.wait()方法
+
+

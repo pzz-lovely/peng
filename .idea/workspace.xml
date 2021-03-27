@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="63d56860-b675-493e-9db9-9fe5eb9434ec" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="peng_imooc" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\apche\cache" />
+        <option name="mavenHome" value="E:/apche/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="E:\apche\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1YkM9rEojYquH0NtMw0vUpPoMcR" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.43678162" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="threadcoreknowledge.createthreads" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\task\peng_imooc\JavaNetModelProgramming\src\main\resources\images" />
+      <recent name="D:\task\peng_imooc\src\main\resources\images" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bio.client" />
+      <recent name="cache" />
+      <recent name="control" />
+      <recent name="cas" />
+      <recent name="atomic" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\task\peng_imooc\juc\src\main\resources\images" />
+      <recent name="D:\task\peng_imooc\src\main\resources\images" />
+      <recent name="D:\task\peng_imooc\juc\src\main\resources" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="threadlocal" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ThreadState">
+    <configuration name="ClientTest2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bio.client.ClientTest2" />
+      <module name="JavaNetModelProgramming" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bio.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileCopyDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="channel.FileCopyDemo" />
+      <module name="JavaNetModelProgramming" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="channel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FixedThreadPoolOOM" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="threadpool.FixedThreadPoolOOM" />
+      <module name="juc" />
+      <option name="VM_PARAMETERS" value="-Xmx8m -Xms8m" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="threadpool.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="computer.Test" />
+      <module name="peng_imooc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="computer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ThreadState" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="threadcoreknowledge.ThreadState" />
+      <module name="peng_imooc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="threadcoreknowledge.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ThreadStateTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="courseware.ThreadStateTest" />
+      <module name="peng_imooc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="courseware.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ThreadState" />
+        <item itemvalue="Application.ThreadStateTest" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.FileCopyDemo" />
+        <item itemvalue="Application.ClientTest2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+    <option name="showServicesTree" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="63d56860-b675-493e-9db9-9fe5eb9434ec" name="Default Changelist" comment="" />
+      <created>1583481990462</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583481990462</updated>
+      <workItem from="1583481993416" duration="5758000" />
+      <workItem from="1583502027875" duration="301000" />
+      <workItem from="1583502355900" duration="2971000" />
+      <workItem from="1583541457770" duration="1322000" />
+      <workItem from="1583543427703" duration="8101000" />
+      <workItem from="1583572104927" duration="13000" />
+      <workItem from="1583629489713" duration="4314000" />
+      <workItem from="1583656351728" duration="15000" />
+      <workItem from="1583713633712" duration="13182000" />
+      <workItem from="1583887413286" duration="6258000" />
+      <workItem from="1583909651156" duration="834000" />
+      <workItem from="1583992040807" duration="11491000" />
+      <workItem from="1584013879580" duration="2106000" />
+      <workItem from="1584059068263" duration="1203000" />
+      <workItem from="1584171064641" duration="4620000" />
+      <workItem from="1584235249850" duration="636000" />
+      <workItem from="1584238553925" duration="19000" />
+      <workItem from="1584239935630" duration="2344000" />
+      <workItem from="1584346893399" duration="6972000" />
+      <workItem from="1584595644257" duration="12054000" />
+      <workItem from="1584661763017" duration="5715000" />
+      <workItem from="1584682662147" duration="3006000" />
+      <workItem from="1584709148086" duration="37000" />
+      <workItem from="1584753173903" duration="5480000" />
+      <workItem from="1584767921384" duration="8125000" />
+      <workItem from="1584790544376" duration="20000" />
+      <workItem from="1584857198807" duration="8013000" />
+      <workItem from="1584919582523" duration="2128000" />
+      <workItem from="1584926221813" duration="3387000" />
+      <workItem from="1584941174270" duration="615000" />
+      <workItem from="1585093489534" duration="18901000" />
+      <workItem from="1585143928867" duration="32000" />
+      <workItem from="1585183752959" duration="27295000" />
+      <workItem from="1585230185571" duration="1580000" />
+      <workItem from="1585231961897" duration="982000" />
+      <workItem from="1585268133595" duration="78000" />
+      <workItem from="1585279770324" duration="8274000" />
+      <workItem from="1585367538069" duration="3808000" />
+      <workItem from="1585443736593" duration="610000" />
+      <workItem from="1585626886031" duration="40000" />
+      <workItem from="1585626952954" duration="8000" />
+      <workItem from="1585697862054" duration="17789000" />
+      <workItem from="1585788595480" duration="9480000" />
+      <workItem from="1585805947497" duration="3695000" />
+      <workItem from="1586390296367" duration="690000" />
+      <workItem from="1586408373191" duration="16000" />
+      <workItem from="1586742136619" duration="10525000" />
+      <workItem from="1586754801544" duration="96000" />
+      <workItem from="1586863211861" duration="1841000" />
+      <workItem from="1587957853001" duration="1354000" />
+      <workItem from="1589543748068" duration="2750000" />
+      <workItem from="1590029397526" duration="11000" />
+      <workItem from="1590148081225" duration="3042000" />
+      <workItem from="1590192097923" duration="33000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1209" y="193" key="#FixedThreadPoolOOM" timestamp="1584603513998">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1209" y="193" key="#FixedThreadPoolOOM/0.0.1920.1040@0.0.1920.1040" timestamp="1584603513998" />
+    <state x="1020" y="175" key="#Inspections" timestamp="1585212273829">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1020" y="175" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1585212273829" />
+    <state x="1049" y="167" key="#Notifications" timestamp="1583716993942">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1049" y="167" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1583716993942" />
+    <state x="552" y="182" key="#Project_Structure" timestamp="1585626903698">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="182" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1585626903698" />
+    <state x="828" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584603569606">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="828" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584603569606" />
+    <state x="1219" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583631773849">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1219" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1583631773849" />
+    <state x="1364" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1589545031048">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1364" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1589545031048" />
+    <state x="1145" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585121722361">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1145" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585121722361" />
+    <state x="475" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585118613281">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="475" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585118613281" />
+    <state x="597" y="56" width="1043" height="936" key="Diagram.Print.Preview.Dialog" timestamp="1585207751957">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="597" y="56" width="1043" height="936" key="Diagram.Print.Preview.Dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585207751957" />
+    <state x="740" y="252" key="FileChooserDialogImpl" timestamp="1587966178925">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="252" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587966178925" />
+    <state width="1877" height="503" key="GridCell.Tab.0.bottom" timestamp="1590152120496">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="503" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590152120496" />
+    <state width="1877" height="503" key="GridCell.Tab.0.center" timestamp="1590152120496">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="503" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590152120496" />
+    <state width="1877" height="503" key="GridCell.Tab.0.left" timestamp="1590152120496">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="503" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590152120496" />
+    <state width="1877" height="503" key="GridCell.Tab.0.right" timestamp="1590152120496">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="503" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590152120496" />
+    <state width="1877" height="434" key="GridCell.Tab.1.bottom" timestamp="1590150014367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="434" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590150014367" />
+    <state width="1877" height="434" key="GridCell.Tab.1.center" timestamp="1590150014366">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="434" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590150014366" />
+    <state width="1877" height="434" key="GridCell.Tab.1.left" timestamp="1590150014366">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="434" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590150014366" />
+    <state width="1877" height="434" key="GridCell.Tab.1.right" timestamp="1590150014367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="434" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590150014367" />
+    <state x="490" y="178" key="Maven.ArtifactSearchDialog" timestamp="1585709949994">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="490" y="178" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585709949994" />
+    <state x="502" y="207" width="994" height="708" key="SettingsEditor" timestamp="1585709464038">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="502" y="207" width="994" height="708" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585709464038" />
+    <state x="1304" y="246" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1583483469257">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1304" y="246" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583483469257" />
+    <state x="488" y="98" width="1251" height="874" key="new project wizard" timestamp="1587966199693">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="488" y="98" width="1251" height="874" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1587966199693" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1586751342539">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586751342539" />
+    <state x="1150" y="236" width="672" height="678" key="search.everywhere.popup" timestamp="1586750299196">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1150" y="236" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586750299196" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/threadcoreknowledge/threadobjectclasscommonmethods/JoinThreadState.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/background/MultiThreadsError.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/background/MultiThreadsError.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/background/MultiThreadsError.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/background/MultiThreadsError.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/juc/src/main/java/cas/TwoThreadCompetitiom.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/juc/src/main/java/cas/TwoThreadCompetitiom.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/computer/DoubleLinedList.java</url>
+          <line>155</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/computer/DoubleLinedList.java</url>
+          <line>153</line>
+          <properties class="computer.DoubleLinedList" method="toArray">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-defaults>
+        <breakpoint suspend="THREAD" type="java-field" />
+        <breakpoint suspend="THREAD" type="java-line" />
+      </breakpoints-defaults>
+    </breakpoint-manager>
+  </component>
+</project>

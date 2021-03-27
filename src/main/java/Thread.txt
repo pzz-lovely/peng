@@ -1,0 +1,53 @@
+    线程调度器
+
+    start方法不能连续调用个
+    启动新线程检查线程状态
+    加入线程组
+    调用start0()
+    run()
+    普通方法
+
+    如何停止线程?
+    interrupt()来通知，而不是强制
+    被停止线程的本身更清楚更如何执行后续的停止和清理工作。
+    想要停止线程，其实是如何正确的用interrupt()来通知线程，以及被停止的线程如何配置停止。
+    要配合isInterrupted();
+    如果线程在睡眠
+
+    sleep()
+        理念:当它一旦响应中断，于是变会把线程标记位interrupt清除
+
+    优先选择: 传递中断
+        传递中断在方法的声明上抛出异常
+    不想或无法传递: 恢复中断
+        再次人为或手动的将它恢复
+    不应屏蔽中断:
+
+    响应中断的方法:
+        Object wait()/wait(long)/wait(long,int)
+        Thread.sleep(long)/sleep(long,int)
+        Thread.join()/join(long)/join(long,int)
+        线程在wait、sleep、join过程中，如果一个中断信号过来了，它是可以感知到的  也就拥有响应中断的能力
+        java.util.concurrent.BlockingQueue.take()/put(E)
+        java.util.concurrent.locks.Lock.lockInterruptibly();
+        这也是能感知到的
+        java.util.concurrent.CountDownLatch.await()
+        java.util.concurrent.CyclicBarrier.await()
+        java.util.concurrent.Exchanger.exchange(V)
+        java.nio.channels.InterruptibleChannel相关方法
+        java.nio.channels.Selector相关方法
+
+    被中断的线程自身拥有 被响应 中断的权利
+
+    interrupt方法
+
+    判断是否已被中断相关方法
+        static boolean interrupted()
+            直接会把线程的中断状态设为fasle，作用返回 是 当前调用方法的线程 
+        boolean isInterrupted()
+            检测方法是否被中断
+        void interrupt()
+            方法的目标对象是"当前线程"，而不管本方法来自于哪个对象
+    不可中断的阻塞
+        针对特定的情况使用特定的方法
+

@@ -1,0 +1,14 @@
+    Synchronize关键字
+    用来保护同步代码块的
+    四种形式
+        static synchronized
+        synchronized(.class)
+        上面两种形式 类对象的。而类对象只有一个实例
+
+        synchronized method()
+        synchronized(object)
+        上面两种形式 对象。synchronized method锁的是当前对象
+
+
+    获取synchronized的锁
+        根据monitorenter 和 monitorexit
