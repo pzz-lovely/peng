@@ -1,0 +1,20 @@
+    查看流中元素
+    stream.forEach(System.out::println);
+    创建泛型数组
+    String[] result = stream.toArray(String[]::new)
+    将流收集到列表或集中
+    List<String> result = stream.collect(Collector.toList());
+    或
+    Set<String> result = stream.collect(Collector.toSet())
+    想要控制集的种类
+    TreeSet<String> result = stream.collect(Collector.toCollection(TreeSet::new))
+    通过连接操作来收集流中的字符串
+    String result = stream.collect(Collection.joining())
+    在元素中增加分隔符
+    String result = stream.collect(Collection.joining(","))
+
+
+    将元素收集到映射表中
+    Map<String,Double> book = stream.collect(Collector.toMap(Book:getName,Book::getPrice));
+
+

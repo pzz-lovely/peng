@@ -1,0 +1,15 @@
+java.util.Random随机数的处理支持。
+
+    Random()
+    Random(long seed)
+    //基于种子值
+
+    int nextInt(int bound)
+    //取值范围 0 ~ 边界值-1
+
+
+
+
+
+
+

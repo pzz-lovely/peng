@@ -1,0 +1,15 @@
+java.util.Timer类：实现线程的调度
+java.util.TimerTask接口：实现定时处理任务的接口定义
+
+    abstract class TimerTask extends Runnable
+    Timer(name,boolean isDaemon)
+
+    void schedule(TimerTask task,long delay)
+    void schedule(TimerTask task,Data date)
+    void schedule(TimerTask task,long delay,long period)
+    //定时操作
+        参数 task 要执行的任务 delay 延迟等待后要开始的时间 period间隔的时间
+        date 到达指定 date时间
+
+
+    这种定时调度的机制属于Java原生的支持功能，相比较使用 后台线程的模式完成，通过这种机制很简单。而且控制也很简单。

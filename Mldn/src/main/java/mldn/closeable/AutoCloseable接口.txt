@@ -1,0 +1,6 @@
+在程序之中所有的资源都是有访问上限，一旦达到了这个上限，那么未来就有可能出现无法继续连接的问题了。
+
+Closeable extends AutoCloseable
+
+AutoClose 自动释放资源。但是这种自动关闭的处理的机制需要有其特定的运行条件：必须结合异常处理语句才可以正常触发关闭操作机制。
+    try(Scanner scanner= new Scanner(System.in))

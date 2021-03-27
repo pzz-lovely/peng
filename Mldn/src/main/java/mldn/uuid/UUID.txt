@@ -1,0 +1,10 @@
+UUID属于一种数据生成算法。是基于时间应用的一种数据工具类，不会重复。
+
+    static String randomUUID()
+    //生成UUID数据
+
+
+
+
+
+

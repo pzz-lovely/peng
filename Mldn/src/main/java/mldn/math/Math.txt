@@ -1,0 +1,23 @@
+java.lang.Math类是在整个Java之中提供一个数学计算的程序功能了，利用整个程序功能类可以非常方便的执行一些数学计算：对数、三角函数。
+
+final class Math;
+
+常量：
+    static double E = 2.7182018;
+    static double PI = 3.141592653;
+
+方法:
+    abs()
+    绝对值。-10=10 10=10;
+    min(int x,int y)
+    最小值
+    max(int x,int y)
+    最大值
+    sin(double x )
+    正弦值。三角函数的操作结果
+    log(double a)
+    对数，对整个程序有非常有用处，程序开发过程中能理解对数的过程，就能进行调优。
+    long round()
+    四舍五入。计算结果可能与传统中的认知有差别的。如果操作的数值为负数，那么这时候，小数点的内容超过了0.5会自动进位处理。
+    long pow(double a,double b)
+    返回阶乘

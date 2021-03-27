@@ -1,0 +1,26 @@
+    Optional类主要解决臭名昭著的空异常。
+    Optional<T>对象是一种包装器对象，要么包装了类型T的对象，要么没有包装任何对象。
+    Optional<T>类型要被当作一种更安全的方式，用来替代类型T的引用。但是它只有在正确的使用情况下才安全
+    T orElse(T other)
+    产生这个Optional<T>的值，如果这个值为null，则产生other
+    T orElseGet(Supplier<? extends T> other)
+    产生这个optional的值，或者在该optional为空时，调用产生other的结果
+    <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSuppler)
+    产生这个Optional的值，或者在该Optional为空时，抛出exceptionSupplier的结果
+    void ifPresent(Consumer<? super T> consumer)
+    如果该Optional不为空，那么久将它传递给consumer。
+    <U> Optional<U> map(Function<? super T,? extends U> mapper)
+    产生将该Optional的值传递给mapper后的结果，只要这个optional不为空，且结果不为Null,否则产生一个空的Optional
+    T get()
+    产生这个Optional的值，或者在Optional为空时，抛出NoSuchElementException对象。
+    boolean isPresent()
+    如果该Optional不为空，则返回true
+
+    static <T> Optional<T> of(T value)
+    static <T> Optional<T> ofNullable(T value)
+    产生一个具有给定值的Optional。如果value为null，那么第一个方法会抛出一个NullPointerException对象，而第二个方法会产生一个空optional。
+    static <T> Optional<T> empty()
+    产生一个空的Optional。
+
+    <U> Optional<U> flatMap(Function<? super T,Optional<U>> mapper)
+    产生将mapper应用于当前Optional值所产生的结果，或者在当前Optional为空时，返回一个空Optional

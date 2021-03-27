@@ -1,0 +1,66 @@
+    java.io.InputStream  abstract
+    abstract int read()
+    从数据中读取一个字节，并返回该字节。这个read方法在碰到输入流的结尾时返回-1
+    int read(byte[] b)
+    读入一个字节数组，并返回实际读入的字节数，或者在碰到输入流的结尾时返回-1.这个read方法最多读入b.length个字节
+    int read(byte[] b,int off,int len)
+    读入一个字节数组。这个read方法返回实际读入的字节数，或者在碰到输入流的结尾时返回-1
+        off 偏移量 返回的int 应该就是偏移量
+    long skip(long n)
+    在输入流中跳过n个字节，返回实际跳过的字节数
+    int available()
+    返回在不阻塞的情况下可获取的字节数。
+    void close()
+    关闭输入流
+    void mark(int readlimit)
+    在输入流的当前位置打一个标记(并非所有的流都支持这个特性)。如果从输入流中已经读入的字节多于readlimit个,则这个留允许忽略这个标记
+    void reset()
+    返回到最后一个标记，随后对read的调用将重新读入这些字节。如果当前没有任何标记，则这个流不重置
+    boolean markSupported()
+    如果这个流支持打标记，返回true
+
+
+    java.io.FileInputStream extends InputStream
+    FileInputStream(String name)
+    FileInputStream(File file)
+    使用name字符串或file对象指定的路径名创建一个新的文件输入流。非绝对的路径名将按照对于VM启动时所设置的工作目录来解析。
+
+    java.io.DataInputStream extends FilterInputStream implements DataInput
+    DataInputStream(InputStream in)
+    boolean readBoolean()
+    byte readByte()
+    char readChar()
+    double readDouble()
+    float readFloat()
+    int readInt()
+    long readLong()
+    short readShort()
+    读入一个给定类型的值
+    void readFully(byte[] b)
+    将字节读入到数组b中，其间阻塞知道所有字节都读入
+        b 数据读入的缓冲区
+    void readFully(byte[] b,int off,int len)
+    将字节读入到数组b中，其阻塞直到所有字节都读入
+    String readUTF ()
+    读入由修改过的utf-8格式的 字符构成的字符串
+    int skipBytes(int n)
+    跳过n个自己，其阻塞直至所有的字节都被跳过
+        n 被跳过的字节
+
+
+
+    java.io.BufferedInputStream extends FilterInputStream
+    BufferedInputStream(InputStream in)
+    创建一个带缓冲区的输入流。带缓冲区的输入流在从流中读入字符时，不会每次都对设备访问。当缓冲区为空时，会想缓冲区读入一个新的数据块。
+
+    java.io.PushbackInputStream  extends FilterInputStream
+    PushbackInputStream(InputStream in)
+    PushbackInputStream(InputStream in,int size)
+    构建一个可以预览一个字节或者具有指定尺寸的回退缓冲区的输入流
+    void unread(int b)
+    回推一个字节，他可以在下次调用read时被再次获取
+        b 要再次读取的字节
+
+
+
+

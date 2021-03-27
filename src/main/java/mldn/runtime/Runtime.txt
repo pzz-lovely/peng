@@ -1,0 +1,32 @@
+    Runtime描述的是一种运行时，在Java程序执行过程之中，所有的Java程序都一定要与进行在JVM进程之中，有了JVM进程。
+    Runtime就可以描述当前进程的相关环境以及与之相关的处理操作。可以进行系统底层控制。
+
+    Runtime类重要的操作就在于内存信息的动态获取，因为整个java程序的正确执行都需要依靠内存的支持，如果内存不能够保证运行环境，那么程序就会出现严重的性能问题，甚至待机。
+
+    static Runtime getRuntime();
+    获取当前Runtime类的实例。
+
+    Process exec(String command)
+    开启新的子进程
+    long maxMemory()
+    最大可用内存
+    long totalMemory()
+    可用内存
+    long freeMemory()
+    剩余可用内存
+    void gc();
+    手工执行GC操作
+    int availableProcessors()
+    返回可用于java虚拟机的处理器数量
+
+    gc
+    Java之中的所有的GC属于守护线程，守护线程是伴随主线程而存在的，主要目的是进行垃圾的回收以及堆内存空间释放；如果要进行GC的处理JVM进程中有两种处理形式：一种是自动的垃圾收集(需要清除整个JVM体系结构)。一般 自动的好。
+    、另外一种属于手工的垃圾收集。
+
+
+    Runtime类之中可以同 exec()创建一个新的子进程，而如果想要对这个子进程进行控制，则可以依据Process类完成。
+    abstract class Process
+    ProcessBuilder.start()和Runtime.exec()方法可以创建子进程
+
+
+    java做这种脚本编程不合适。

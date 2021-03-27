@@ -1,0 +1,29 @@
+java.io.File implements Comparable
+
+文件和目录操作类
+    File(String pathname)
+    File(String parent,String child)
+
+    boolean delete()
+    boolean createNewFile()
+    boolean exists()
+    //判断文件是否 删除、新建、存在
+    boolean mkdir()
+    boolean mkdirs()
+    //创建单级或多级目录
+    File getParents()
+    //获取父路径对应的一个文件对象
+
+    boolean canExecute()
+    //判断当前文件是否拥有可执行的权利
+    boolean canRead()
+
+
+    String[] list()
+    //列出所有的子路径名称
+    File[] listFiles()
+    //列出所有子路径的File对象数组
+    File[] listFiles(FileFilter filter)
+    //列出目录组成的时候设置一个判断的过滤器
+    File renameTo(File file)
+    //renameTo()方法除了拥有更名的功能之外还可以实现文件的磁盘移动

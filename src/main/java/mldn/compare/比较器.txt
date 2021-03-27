@@ -1,0 +1,11 @@
+比较器是一种最常见的功能。
+    Arrays.sort(Object[] a)
+
+    Comparable<T>比较器 设计时考虑到排序需求
+
+    compare(T t)
+
+    Comparator<T>比较器 设计时没有考虑到排序需求
+    Comparator<T>除了基本的排序支持之外，其内部实际上也存在有大量的数据排序的处理操作。reversed()内容的一个反转
+    java.lang.Comparable：是在类定义的时候实现接口，该接口只存在只有一个compareTo()方法确定大小关系
+    java.util.Comparator：是属于挽救的比较器，除了可以实现排序的功能之外

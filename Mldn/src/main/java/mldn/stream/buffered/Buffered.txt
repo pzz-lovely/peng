@@ -1,0 +1,6 @@
+BufferedReader将所有读取到的内容暂时放到一个缓冲区之中。使用BufferedReader类有一个readLine()方法，这个方法最大的特点在于，可以实现一个字符串数据的读取，并且是依据换行进行的分割
+
+    BufferedReader extends Reader
+    BufferedReader(Reader in)
+
+    String readLine()

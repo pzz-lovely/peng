@@ -1,0 +1,16 @@
+
+PrintWrite PrintStream
+
+
+System对IO的支持。
+    常量
+    static final InputStream in; 表示标准键盘输入
+    static final PrintStream out; 表示标准键盘输出
+    static final PrintStream out; 表示错误输出
+
+
+
+
+
+
+

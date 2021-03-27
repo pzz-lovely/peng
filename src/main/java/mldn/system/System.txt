@@ -1,0 +1,14 @@
+System是一个在java开发过程之中最为常见的一种系统类，这个类的主要特点是可以直接执行一些系统命令。
+
+    static void arrayCopy(Object src,int scrPos,Object dest,int destPos,int length)
+    数组拷贝
+
+    static long currentTimeMillis()
+    获取当前的时间戳
+
+    static void exit(int status)
+    结束JVM进程。等价于 Runtime.exit();
+    static void gc()
+    执行垃圾回收，等价于Runtime.gc();
+
+    System提供某一行耗时时间，在System.currentTimeMillis()获取当前时间戳，

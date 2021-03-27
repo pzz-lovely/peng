@@ -1,0 +1,24 @@
+Optional是在JDK1.8之后提供的一种新的系统类，这个类可以保证存储的数据不为Null。
+
+    final class Optional<T>
+
+    static <T> Optional<T> of(T value) *
+    //保存一个数据，该数据不允许为空，为空抛出npe异常
+
+    static <T> Optional<T> ofNullable(T value)
+    //可以保存一个空数据
+
+    T get()
+    //从里面取出数据
+
+    boolean isEmpty()
+    是否为一个 空的Optional
+
+    boolean isPresent()
+    是否存在有内容，如果存在返回true，否则返回null
+
+
+
+
+
+

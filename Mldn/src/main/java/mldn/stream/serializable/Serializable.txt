@@ -1,0 +1,16 @@
+Serializable 明确对实现二进制类进行标注
+Serializable接口并没有提供任何的方法供用户使用，因为它只是一种标示性的接口，表示一种处理能力。
+
+    java.io包提供了序列化和反序列的操作
+       ObjectInputStream ObjectOutputStream
+
+       ObjectOutputStream(OutputStream out)
+       ObjectInputStream(InputStream in)
+
+
+有三种接收数据的 文件数据，内存数据，键盘数据
+
+
+transient关键字 不需要被序列化
+
+java里面对序列化的处理两种机制：全自动序列化管理，另外一种手工实现序列化管理。

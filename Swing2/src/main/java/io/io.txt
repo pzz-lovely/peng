@@ -1,0 +1,21 @@
+    输入流: 其中读入一个字节序列的对象
+    输出流: 向其中写入一个字节序列的对象。
+    read和write方法执行时都将阻塞，直至字节确实被读入或写出。这就意味着如果流不能被立即访问，那么当前的线程将被阻塞。
+    关闭输出流的同时还会冲刷用于该输出流的缓冲区:所有被临时置于缓冲区中，以便用更大的包的形式传递的字节在关闭输出流时都将被送出。
+
+
+    RandomAccessFile类可以 在文件中的任何位置查找或写入数据。磁盘文件都是随机访问的。但是网络套接字通信的输入/输出流却不是。
+    随机访问文件有一个表示下一个将被读入或写出的字节所处位置的文件指针，seek方法可以用来将这个文件指针设置到文件中的任意字节位置，seek的参数是一个long类型的整数，它的值位于0到文件按照字节来度量的长度之间。
+
+    java.io.RandomAccessFile implements DataInput,DataOut
+    RandomAccessFile(String file ,String mode)
+    RandomAccessFile(File file,String mode)
+        file 要打开的文件
+        mode r表示只读模式；rw表示读写模式；rws表示每次更新时，都对数据和元数据的写磁盘操作进行同步的读/写模式；rwd表示每次更新时，只对数据的写磁盘操作进行同步的读/写模式。
+
+    long getFilePointer()
+    返回文件指针的当前位置
+    void seek(long pos)
+    将文件指针设置到距文件开头pos个字节处
+    long length()
+    返回文件按照字节来度量的长度

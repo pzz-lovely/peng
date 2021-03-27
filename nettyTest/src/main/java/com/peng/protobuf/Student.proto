@@ -1,0 +1,8 @@
+syntax = "proto3";  // 版本
+package com.peng.protobuf;
+option java_outer_classname = "MyStudent";
+
+message Student{
+  int32 id = 1; // 1 表示序号 不是值
+  string name = 2;
+}

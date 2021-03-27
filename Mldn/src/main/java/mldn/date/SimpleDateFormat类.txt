@@ -1,0 +1,15 @@
+格式化日期的处理操作，java.text.SimpleDateForamt
+数据类型转换表
+
+public class SimpleDateFormat extends DateFormat
+
+abstract class DateFormat extends Format
+方法:
+    final String format(Date date)
+    将日期格式转化为字符串
+    final Date parse(String source)
+    将字符串转换为日期
+
+SimpleDateFormat(String pattern)
+实例化SimpleDateFormat类对象，并设置匹配模式
+ yyyy年 MM月 dd日 HH时 mm分 ss秒 毫秒SSS

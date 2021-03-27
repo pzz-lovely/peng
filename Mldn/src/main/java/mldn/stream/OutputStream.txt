@@ -1,0 +1,12 @@
+abstract java.io.OutputStream implement Closeable,Flushable
+    重要输出方法:
+    void write(byte[] buf)
+    void write(byte[] buf,int offset,int length)*
+    void write(int b)
+    //内容输出的方法
+
+
+    FileOutputStream extends OutputStream
+    FileOutputStream(File file)
+    FileOutputStream(File file,boolean append)
+    //append表示是否要内容追加

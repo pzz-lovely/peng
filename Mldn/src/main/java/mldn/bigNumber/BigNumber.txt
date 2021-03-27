@@ -1,0 +1,12 @@
+java.math.BigInteger(大整数操作类),BigDecimal(大小数操作类) 用户大数据的保存。
+
+    Number所有数值公共父类
+    BigDecimal extends Number
+    BigDecimal extends Number
+
+    BigInteger(String val)
+    BigInteger(byte[] byte)
+    在使用bigInteger需要明确的传入一个字符串，而这个字符串所包含的就是一个大数字的信息。
+
+
+

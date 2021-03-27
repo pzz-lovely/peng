@@ -1,0 +1,19 @@
+
+Scanner(InputStream in)
+Scanner(InputStream in,String charsetName)
+//明确定义了一个输入流
+Scanner（File source)
+//获取一个文件的扫描流
+Scanner(File source,String charsetName)
+//使用特定的编码打开一个文件流
+Scanner(String source)
+//将直接一个字符串作为输入流
+
+方法：
+    boolean hashNext()
+    判断是否有数据
+    boolean hashNextXxx()
+    String next()
+    //获取当前输入数据
+    Xxx getXxx()
+    获取指定类型

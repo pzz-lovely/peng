@@ -1,0 +1,21 @@
+
+基于内存的方式实现输入和输出的处理 。
+    字节内存操作流：ByteArrayInputStream(字节内存输入流)、ByteArrayOutputStream(字节内存输出流 )
+    字节内存操作流：CharArrayReader(字符内存输入流)，CharArrayWrite(字符内存输出流)
+    类定义：
+        extends InputStream extends OutputStream extends Reader extends Writer
+    构造方法：
+        ByteArrayInputStream(byte[] buf)
+        ByteArrayOutputStream()
+
+    方法:
+        byte[] toByteArray()
+        将内存流中保存的全部字节一次性取出
+
+不管是文件输入流还是内存输入流，那么有一个首要的前提条件就是一定要提供有非常完善的数据以供read()方法进行读取，由于内存流所有的操作信息都是基于内存完成的，那么就必要程序中具体要读取的数据通过字节数组来进行定义
+    意义：
+        某些输出的过程仅仅是能够在内存中处理的，例如在项目中使用的登录验证码这样的图片都是在内存中处理的。同时在早期的IO时代(jdk1.9以前)
+        ，可以结合内存输出流以及文件输入流实现整个文件数据的全部读取。toByteArray()
+
+    toByteArray()此时的操作一定s是存在有隐患的，因为如果要读取的文件数据量过大，那么这种情况下可能会造成内存溢出，这是JDK1.9之前的做法，在jdk1.9之后InputStream类中 提供了新的功能 byte[]
+    readAllBytes();

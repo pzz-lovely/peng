@@ -1,0 +1,38 @@
+    java.io.OutputStream
+    abstract void write(int n)
+    写出一个字节的数据
+    void write(byte[] b)
+    void write(byte[] b,int off ,int len)
+    写出所有字节或某个范围的字节到数组b中
+    void close()
+    冲刷并关闭输出流
+    void flush()
+    冲刷输出流，也就是说将所有缓冲的数据发送到目的地。
+
+    java.io.FileOutputStream
+    FileOutputStream(String name)
+    FileOutputStream(String name,boolean append)
+    FileOutputStream(File file)
+    FileOutputStream(File file,boolean append)
+    使用由name字符串或file对象指定的路径名创建一个新的文件输出流。如果append参数为true，那么数据将被添加到文件尾，而具有相同名字的已有文件不会删除；否则，这个方法会删除所有具有相同名字的已有文件
+
+    java.io.BufferInputStream extends FilterInputStream
+    BufferedInputStream(OutputStream out)
+    创建一个带缓冲区的输出流。带缓冲区的输出流在从六种写出的字符时，不会每次都对设备访问。当缓冲区的填满或当流被冲刷时，数据就会被写出
+
+    java.io.DataOutput
+    DataOutput(OutputStream out)
+
+    void writeBoolean(boolean b)
+    void writeByte(int b)
+    void writeChar(int c)
+    void writeDouble(double b)
+    void writeFloat(float f)
+    void writeInt(int i )
+    void writeLong(long l)
+    void writeShort(int s)
+    写出给定类型的值
+    void writeChars((String s)
+    写出字符串中的索引字符
+    void writeUTF(String s)
+    写出由 "修订过的utf-8" 各式的字符串构成的字符串。 这个只用于java虚拟机的字符串采用writeUTF方法。

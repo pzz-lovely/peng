@@ -1,0 +1,14 @@
+java.io.InputStream implements Closeable
+    方法
+    int available()
+    //获取全部的可用的字节数
+    int read()
+    //读取单个字节
+    int read(byte[] b)
+    //将内容读取到字节数组中，并返回读取的字节长度
+    int read(byte[] b,int off,int len)
+    //读取部分内容
+    byte[] readAllBytes()
+    1.9读取输入流中的全部字节内容
+    long transferTo(OutputStream out)
+    1.9 流的传输转换

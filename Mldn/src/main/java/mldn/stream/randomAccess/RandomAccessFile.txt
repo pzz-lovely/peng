@@ -1,0 +1,27 @@
+在操作系统的编程之中，对于早期的文件为了让其可以保存的数据更加有意义。
+所谓随机读写实际上就相当于在整个文件中设置有一个文件读取的指针，每次读取的时候都会依据指针的位置进行指定长度数据的读取，如果要想读取某一行数据，那么只需要修改指针的文字即可，这样的读取操作称为随机文件读取
+    java.io.RandomAccessFile
+
+    RandomAccessFile(File file,String mode)
+    通过指定的文件随机读取模式，同时设置 操作模式 两种重要选择 r ,rw
+    int read(byte[] b)
+    int readInt()
+    double readDouble()
+    读取指定的字节数据
+
+    void seek(long pos)
+    设置读取指针的位置
+    int skipBytes(int n)
+    跳过指定长度的字节
+
+    void write(byte[] b)
+    写入字节数据
+    void writeInt(int v)
+    void writeDouble(double v
+
+    要想实现这种随机读写的功能，那么首要的条件：保证每组数据写入的长度是相同的，也就是说数据不足的情况下，前后一定要补上空格
+
+    输出的文件是一个纯粹的二进制数据
+
+
+    数据库用
