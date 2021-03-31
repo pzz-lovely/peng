@@ -11,6 +11,7 @@
     <modules>
         <module>design-pattern</module>
         <module>data-structure</module>
+        <module>quartz</module>
     </modules>
 
     <properties>
